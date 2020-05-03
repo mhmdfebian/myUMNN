@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Primary">#1f375f</color>
+    <color name="PrimaryDark">#1c3359</color>
+    <color name="PrimaryDarker">#193056</color>
+    <color name="PrimaryDarkest">#0e203f</color>
+    <color name="Secondary">#6cc5dd</color>
+    <color name="Teritary">#6c7a89</color>
+    <color name="TeritaryLight">#c5ccd2</color>
+    <color name="bg_dark">#ecf0f1</color>
+    <color name="bg_light">#ffffff</color>
+
+</resources>

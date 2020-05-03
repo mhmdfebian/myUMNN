@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@color/bg_dark"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="52sp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/gilroy_extrabold"
+        android:textColor="@color/Primary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/card"
+        android:backgroundTint="@color/bg_light"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Email"
+            android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/Primary"
+            android:textSize="20sp"
+            android:layout_marginEnd="16dp"/>
+        <EditText
+            android:id="@+id/emailHint"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailLabel"
+            android:layout_marginTop="6dp"
+            android:hint="Please enter your student email"
+            android:fontFamily="@font/gilroy_light"
+            android:textSize="18sp"
+            android:textColor="@color/Teritary"
+            android:background="@null"
+            android:inputType="textEmailAddress"/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toEndOf="@id/emailHint"
+            android:layout_below="@id/emailLabel"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/cap"
+            android:tint="@color/Teritary"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/card"
+        android:backgroundTint="@color/bg_light"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/passLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/Primary"
+            android:textSize="20sp"
+            android:layout_marginEnd="16dp"/>
+        <EditText
+            android:id="@+id/passHint"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passLabel"
+            android:layout_marginTop="6dp"
+            android:hint="Please enter your password"
+            android:fontFamily="@font/gilroy_light"
+            android:textSize="18sp"
+            android:textColor="@color/Teritary"
+            android:background="@null"
+            android:inputType="textPassword"/>
+        <Button
+            android:id="@+id/btnShow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toEndOf="@id/passHint"
+            android:layout_below="@id/passLabel"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/Teritary"
+            android:background="@drawable/visible"
+            style="?android:attr/borderlessButtonStyle"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <Button
+            android:id="@+id/btnSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:textAllCaps="false"
+            android:text="Sign In"
+            android:textSize="24dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/bg_light"
+            android:background="@drawable/card"
+            android:backgroundTint="@color/Primary"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="© 2020 Universitas Multimedia Nusantara"
+        android:textSize="11sp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:textColor="@color/TeritaryLight" />
+
+</LinearLayout>

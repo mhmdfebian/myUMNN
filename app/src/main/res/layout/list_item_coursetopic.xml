@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:text="Topic"
+        android:textColor="@color/Secondary"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iconTitle"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_margin="4dp"
+        android:layout_below="@id/topic"
+        android:src="@drawable/file"
+        android:tint="@color/Teritary"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="4dp"
+        android:layout_below="@id/topic"
+        android:layout_toEndOf="@id/iconTitle"
+        android:fontFamily="@font/gilroy_medium"
+        android:text="Title"
+        android:textColor="@color/TeritaryLight"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/title"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/card"
+        android:tint="@color/TeritaryLight" />
+</RelativeLayout>
