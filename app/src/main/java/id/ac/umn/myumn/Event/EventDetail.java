@@ -1,5 +1,6 @@
 package id.ac.umn.myumn.Event;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,6 +32,8 @@ public class EventDetail extends AppCompatActivity {
     String userID, eventID, eventName, eventDate, eventTime, eventLocation, eventDesc;
 
     TextView tvName, tvDate, tvDesc, tvLocation;
+
+    boolean upadd;
 
 
     @Override
@@ -63,36 +68,66 @@ public class EventDetail extends AppCompatActivity {
         });
 
 
+
         eventID = pindah.getStringExtra("eventID");
         eventName = pindah.getStringExtra("eventName");
         eventDate = pindah.getStringExtra("eventDate");
         eventTime = pindah.getStringExtra("eventTime");
         eventLocation = pindah.getStringExtra("eventLocation");
         eventDesc = pindah.getStringExtra("eventDesc");
+        upadd = pindah.getBooleanExtra("upadd",upadd);
 
         tvName.setText(eventName);
         tvDesc.setText(eventDesc);
         tvDate.setText(eventDate);
         tvLocation.setText(eventLocation);
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference docRef = fStore.collection("user").document(userID).collection("events").document(eventID);
-                Map<String, Object> event = new HashMap<>();
-                event.put("eventname", eventName);
-                event.put("eventdesc", eventDesc);
-                event.put("eventdate", eventDate);
-                event.put("eventlocation", eventLocation);
-                event.put("eventtime", eventTime);
-                docRef.set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(EventDetail.this, eventName + " berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+
+
+        if(upadd) {
+            btnAdd.setBackgroundResource(R.drawable.close);
+            btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DocumentReference docRef = fStore.collection("user").document(userID).collection("events").document(eventID);
+                    docRef.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(EventDetail.this, eventName + " berhasil dihapus!", Toast.LENGTH_SHORT).show();
+                                Intent intentBack = new Intent();
+                                setResult(RESULT_OK, intentBack);
+                                finish();
+                                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                            }
+                        }
+                    });
+
+                }
+            });
+
+        }
+        else{
+            btnAdd.setBackgroundResource(R.drawable.plus);
+            btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DocumentReference docRef = fStore.collection("user").document(userID).collection("events").document(eventID);
+                    Map<String, Object> event = new HashMap<>();
+                    event.put("eventname", eventName);
+                    event.put("eventdesc", eventDesc);
+                    event.put("eventdate", eventDate);
+                    event.put("eventlocation", eventLocation);
+                    event.put("eventtime", eventTime);
+                    docRef.set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(EventDetail.this, eventName + " berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+        }
 
 
     }

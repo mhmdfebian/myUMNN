@@ -46,6 +46,7 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
     private EventAddedAdapter adapteradded;
     Query query;
     EventModel eventModel1;
+    boolean upadd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
             }
         });
 
+        upadd = false;
 
         spinnerEvent = findViewById(R.id.spinnerEvent);
 
@@ -87,11 +89,13 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position == 0) {
+                    upadd = false;
                     upcomming();
                     lvEvent.setAdapter(adapter);
 
                 }
                 if (position == 1) {
+                    upadd = true;
                     added();
                     lvEvent.setAdapter(adapter);
                 }
@@ -124,9 +128,8 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
                 .putExtra("eventDate", snapshot.getString("eventdate"))
                 .putExtra("eventTime", snapshot.getString("eventtime"))
                 .putExtra("eventLocation", snapshot.getString("eventlocation"))
-                .putExtra("eventDesc", snapshot.getString("eventdesc")));
-
-
+                .putExtra("eventDesc", snapshot.getString("eventdesc"))
+                .putExtra("upadd", upadd));
     }
 
     @Override

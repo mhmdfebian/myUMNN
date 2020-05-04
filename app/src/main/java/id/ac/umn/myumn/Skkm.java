@@ -20,11 +20,12 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Skkm extends AppCompatActivity {
     Button btnMenu, btnNotif;
-    TextView textViewPM, textViewBM , textViewOPK, textViewIP;
+    TextView textViewPM, textViewBM , textViewOPK, textViewIP, textViewPersen;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
     ProgressBar pbSKKM;
+    int persen, totalSKKM;
 
     private static final String KEY_BM = "minatbakat";
     private static final String KEY_IP = "ilmupenalaran";
@@ -45,6 +46,7 @@ public class Skkm extends AppCompatActivity {
         textViewIP = findViewById(R.id.tvIP);
         textViewOPK = findViewById(R.id.tvOPK);
         textViewPM = findViewById(R.id.tvPM);
+        textViewPersen = findViewById(R.id.tvPersen);
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -100,7 +102,8 @@ public class Skkm extends AppCompatActivity {
                         PM = 4;
                     }
 
-                    int totalSKKM = BM + IP + OPK + PM;
+                   totalSKKM = BM + IP + OPK + PM;
+                   persen = totalSKKM * 100 / 20;
 
                     pbSKKM.setProgress(totalSKKM);
 
@@ -108,6 +111,7 @@ public class Skkm extends AppCompatActivity {
                     textViewIP.setText(documentSnapshot.getLong(KEY_IP).toString());
                     textViewOPK.setText(documentSnapshot.getLong(KEY_OPK).toString());
                     textViewPM.setText(documentSnapshot.getLong(KEY_PM).toString());
+                    textViewPersen.setText(persen + "%");
                 }else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }

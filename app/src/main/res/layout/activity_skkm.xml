@@ -243,7 +243,17 @@
 
     </GridLayout>
 
-
+    <TextView
+        android:id="@+id/tvPersen"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/gilroy_medium"
+        android:text="0 / 6"
+        android:textAlignment="center"
+        android:textColor="@color/Primary"
+        android:textSize="29sp"/>
 
 
 </LinearLayout>
