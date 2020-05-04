@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Dashboard.Dashboard;
+import id.ac.umn.myumn.Event.Event;
 
 public class Menu extends AppCompatActivity {
 
-    Button btnClose, btnDashboard, btnProfile, btnCourse, btnLogout;
+    Button btnClose, btnSchedule, btnDashboard, btnProfile, btnCourse, btnEvent, btnAttendance, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,10 @@ public class Menu extends AppCompatActivity {
         btnClose = findViewById(R.id.btnClose);
         btnDashboard = findViewById(R.id.btnDashboard);
         btnProfile = findViewById(R.id.btnProfile);
+        btnSchedule = findViewById(R.id.btnSchedule);
         btnCourse = findViewById(R.id.btnCourse);
+        btnEvent = findViewById(R.id.btnEvent);
+        btnAttendance = findViewById(R.id.btnAttendance);
         btnLogout = findViewById(R.id.btnLogout);
 
         btnDashboard.setOnClickListener(new View.OnClickListener() {
@@ -49,10 +54,43 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        btnSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, Schedule.class);
+                startActivity(i);
+                //Transisi (masuk menu) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
         btnCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Course.class);
+                startActivity(i);
+                //Transisi (masuk menu) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
+        btnEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, Event.class);
+                startActivity(i);
+                //Transisi (masuk menu) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
+        btnAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, Attendance.class);
                 startActivity(i);
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -67,8 +105,8 @@ public class Menu extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
+                //Transisi (keluar) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -89,7 +127,6 @@ public class Menu extends AppCompatActivity {
     public void onBackPressed() {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
-        finish();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
     }

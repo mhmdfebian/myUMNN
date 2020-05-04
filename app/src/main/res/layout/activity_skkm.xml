@@ -2,258 +2,279 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
     android:orientation="vertical"
     tools:context=".Skkm">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="73dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnMenu"
+            android:id="@+id/btnClose"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/menus"
-            android:backgroundTint="@color/Teritary"
-            android:padding="2dp" />
-
-
-        <Button
-            android:id="@+id/btnNotif"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="283dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/bell"
-            android:backgroundTint="@color/Teritary"
-            android:padding="2dp" />
-
-
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/close"
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
     </LinearLayout>
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/gilroy_extrabold"
             android:text="SKKM Points"
             android:textColor="@color/Primary"
             android:textSize="30sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp">
 
         <ProgressBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:id="@+id/pbSKKM"
             style="?android:progressBarStyleHorizontal"
+            android:layout_width="340dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="8dp"
+            android:indeterminate="false"
             android:max="20"
-            android:progress="20"
-            />
+            android:progress="10"
+            android:progressDrawable="@drawable/progressbar" />
+
+        <TextView
+            android:id="@+id/tvPersen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="50%"
+            android:textAlignment="center"
+            android:textColor="@color/Secondary"
+            android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
 
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="2">
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false">
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="9.5dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                android:gravity="center"
+                android:padding="16dp">
 
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/card"
-            android:backgroundTint="@color/bg_light"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+                <TextView
+                    android:id="@+id/tvIP"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginStart="15dp"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
-            <TextView
-                android:id="@+id/tvIP"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="0 / 6"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="29sp"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvIP"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginEnd="28dp"
+                    android:text=" / 0"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvIP"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="Ilmiah dan Penalaran"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="15sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/card"
-            android:backgroundTint="@color/bg_light"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvIP"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Ilmiah dan Penalaran"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Primary"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvBM"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="0 / 4"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="29sp"
-                />
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="9.5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvBM"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="Bakat dan Minat"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="15sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/card"
-            android:backgroundTint="@color/bg_light"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+                <TextView
+                    android:id="@+id/tvBM"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginStart="15dp"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
-            <TextView
-                android:id="@+id/tvOPK"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="0 / 6"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="29sp"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvBM"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginEnd="28dp"
+                    android:text=" / 0"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvOPK"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="Organisasi dan Pengembangan Kepribadian"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="10sp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/card"
-            android:backgroundTint="@color/bg_light"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvBM"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Bakat dan Minat"
+                    android:textAlignment="center"
+                    android:textColor="@color/Primary"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tvPM"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="0 / 4"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="29sp"
-                />
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="9.5dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvPM"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/gilroy_medium"
-                android:text="Pengabdian Masyarakat"
-                android:textAlignment="center"
-                android:textColor="@color/Primary"
-                android:textSize="15sp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvOPK"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="0"
+                    android:layout_marginStart="15dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvOPK"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginEnd="28dp"
+                    android:text=" / 0"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvOPK"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Organisasi dan Pengembangan Kepribadian"
+                    android:textAlignment="center"
+                    android:textColor="@color/Primary"
+                    android:textSize="10sp" />
+            </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="9.5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
+                <TextView
+                    android:id="@+id/tvPM"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginStart="15dp"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvPM"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginEnd="28dp"
+                    android:text=" / 0"
+                    android:textColor="@color/Primary"
+                    android:textSize="29sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPM"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Pengabdian Masyarakat"
+                    android:textAlignment="center"
+                    android:textColor="@color/Primary"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
-    </GridLayout>
+        </GridLayout>
 
-    <TextView
-        android:id="@+id/tvPersen"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/gilroy_medium"
-        android:text="0 / 6"
-        android:textAlignment="center"
-        android:textColor="@color/Primary"
-        android:textSize="29sp"/>
-
+    </LinearLayout>
 
 </LinearLayout>

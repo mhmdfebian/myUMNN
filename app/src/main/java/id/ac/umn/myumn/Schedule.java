@@ -167,9 +167,10 @@ public class Schedule extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
-
+    @Override
+    public void onBackPressed() {
+        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+    }
 }

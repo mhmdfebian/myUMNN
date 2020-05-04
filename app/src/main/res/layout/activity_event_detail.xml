@@ -22,9 +22,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:padding="12dp"
             android:background="@drawable/close"
-            android:backgroundTint="@color/TeritaryLight" />
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
     </LinearLayout>
 
     <RelativeLayout
@@ -34,47 +34,100 @@
 
         <TextView
             android:id="@+id/eventName"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/gilroy_extrabold"
             android:text="Event"
             android:textColor="@color/Primary"
             android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="2.5dp"
+            android:layout_toEndOf="@+id/eventName"
+            android:background="@drawable/plus"
+            android:backgroundTint="@color/Secondary"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="end" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/eventName"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/gilroy_light"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_medium"
             android:text="Event description"
-            android:textColor="@color/TeritaryLight"
+            android:textColor="@color/Teritary"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/listCourse"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/card"
+            android:tint="@color/TeritaryLight" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp">
+
+        <ImageView
+            android:id="@+id/iconDate"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/calendar2"
+            android:tint="@color/Secondary" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@id/iconDate"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:text="Date"
+            android:textColor="@color/Secondary"
             android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/iconTime"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_below="@id/desc"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/time"
+            android:layout_below="@id/iconDate"
             android:tint="@color/Secondary" />
 
         <TextView
-            android:id="@+id/date"
-            android:layout_width="60dp"
+            android:id="@+id/time"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/desc"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_below="@+id/date"
             android:layout_toEndOf="@id/iconTime"
             android:fontFamily="@font/gilroy_medium"
             android:gravity="start"
@@ -86,10 +139,8 @@
             android:id="@+id/iconLocation"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_below="@id/desc"
-            android:layout_toEndOf="@id/date"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/date"
             android:src="@drawable/location"
             android:tint="@color/Secondary" />
 
@@ -97,36 +148,13 @@
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/desc"
-            android:layout_toEndOf="@id/iconLocation"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/iconLocation"
             android:fontFamily="@font/gilroy_medium"
             android:gravity="start"
             android:text="Location"
             android:textColor="@color/Secondary"
             android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/btnAdd"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="-86dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="2.5dp"
-            android:layout_toEndOf="@id/iconLocation"
-            android:layout_below="@id/location"
-            android:background="@drawable/plus"
-            android:backgroundTint="@color/Secondary"
-            android:fontFamily="@font/gilroy_medium"
-            android:gravity="end" />
-
     </RelativeLayout>
-
-
-
 </LinearLayout>

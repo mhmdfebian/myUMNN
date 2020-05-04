@@ -19,8 +19,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Skkm extends AppCompatActivity {
-    Button btnMenu, btnNotif;
-    TextView textViewPM, textViewBM , textViewOPK, textViewIP, textViewPersen;
+    Button btnClose;
+    TextView textViewPM, textViewBM, textViewOPK, textViewIP, textViewPersen;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -29,7 +29,7 @@ public class Skkm extends AppCompatActivity {
 
     private static final String KEY_BM = "minatbakat";
     private static final String KEY_IP = "ilmupenalaran";
-    private static final String KEY_OPK= "organisasi";
+    private static final String KEY_OPK = "organisasi";
     private static final String KEY_PM = "pengabdianmasyarakat";
 
     @Override
@@ -37,8 +37,7 @@ public class Skkm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skkm);
 
-        btnMenu = findViewById(R.id.btnMenu);
-        btnNotif = findViewById(R.id.btnNotif);
+        btnClose = findViewById(R.id.btnClose);
 
         pbSKKM = findViewById(R.id.pbSKKM);
 
@@ -52,58 +51,40 @@ public class Skkm extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         userID = mAuth.getCurrentUser().getUid();
 
-        btnMenu.setOnClickListener(new View.OnClickListener() {
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Skkm.this, Menu.class);
-                startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                Intent intentBack = new Intent();
+                setResult(RESULT_OK, intentBack);
+                finish();
+                //Transisi (keluar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finishAffinity();
             }
         });
-
-        btnNotif.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Skkm.this, Notification.class);
-                startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
 
 
         DocumentReference documentReference = fStore.collection("user").document(userID).collection("skkm").document("skkm");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
-                    int BM =  documentSnapshot.getLong(KEY_BM).intValue();
-                    int IP =  documentSnapshot.getLong(KEY_IP).intValue();
-                    int OPK =  documentSnapshot.getLong(KEY_OPK).intValue();
-                    int PM =  documentSnapshot.getLong(KEY_PM).intValue();
+                if (documentSnapshot.exists()) {
+                    int BM = documentSnapshot.getLong(KEY_BM).intValue();
+                    int IP = documentSnapshot.getLong(KEY_IP).intValue();
+                    int OPK = documentSnapshot.getLong(KEY_OPK).intValue();
+                    int PM = documentSnapshot.getLong(KEY_PM).intValue();
 
-                    if (BM > 4)
-                    {
+                    if (BM > 4) {
                         BM = 4;
-                    }
-                    else if (IP > 6)
-                    {
+                    } else if (IP > 6) {
                         IP = 6;
-                    }
-                    else if (OPK > 6)
-                    {
+                    } else if (OPK > 6) {
                         OPK = 6;
-                    }
-                    else if (PM > 4)
-                    {
+                    } else if (PM > 4) {
                         PM = 4;
                     }
 
-                   totalSKKM = BM + IP + OPK + PM;
-                   persen = totalSKKM * 100 / 20;
+                    totalSKKM = BM + IP + OPK + PM;
+                    persen = totalSKKM * 100 / 20;
 
                     pbSKKM.setProgress(totalSKKM);
 
@@ -112,11 +93,15 @@ public class Skkm extends AppCompatActivity {
                     textViewOPK.setText(documentSnapshot.getLong(KEY_OPK).toString());
                     textViewPM.setText(documentSnapshot.getLong(KEY_PM).toString());
                     textViewPersen.setText(persen + "%");
-                }else {
+                } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
     }
 }

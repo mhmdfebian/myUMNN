@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -17,12 +15,12 @@
         app:cardElevation="0dp">
 
         <RelativeLayout
-            android:layout_width="380dp"
-            android:layout_height="130dp">
+            android:layout_width="match_parent"
+            android:layout_height="145dp">
 
             <TextView
                 android:id="@+id/nameEvent"
-                android:layout_width="300dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -38,13 +36,13 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_marginStart="-86dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="2.5dp"
                 android:layout_toEndOf="@id/nameEvent"
                 android:background="@drawable/plus"
-                android:backgroundTint="@color/Secondary"
+                android:backgroundTint="@color/TeritaryLight"
                 android:fontFamily="@font/gilroy_medium"
                 android:gravity="end" />
 
@@ -57,7 +55,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
-                android:fontFamily="@font/gilroy_light"
+                android:fontFamily="@font/gilroy_medium"
                 android:text="Event description"
                 android:textColor="@color/TeritaryLight"
                 android:textSize="12sp" />
@@ -69,12 +67,12 @@
                 android:layout_below="@id/desc"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/time"
+                android:src="@drawable/calendar2"
                 android:tint="@color/Secondary" />
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="60dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/desc"
                 android:layout_marginStart="4dp"
@@ -83,7 +81,7 @@
                 android:layout_toEndOf="@id/iconTime"
                 android:fontFamily="@font/gilroy_medium"
                 android:gravity="start"
-                android:text="Time"
+                android:text="Date"
                 android:textColor="@color/Secondary"
                 android:textSize="12sp" />
 
@@ -92,9 +90,9 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_below="@id/desc"
-                android:layout_toEndOf="@id/date"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/date"
                 android:src="@drawable/location"
                 android:tint="@color/Secondary" />
 
@@ -103,11 +101,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/desc"
-                android:layout_toEndOf="@id/iconLocation"
                 android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:layout_toEndOf="@id/iconLocation"
                 android:fontFamily="@font/gilroy_medium"
                 android:gravity="start"
                 android:text="Location"

@@ -20,8 +20,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import id.ac.umn.myumn.Course.CourseModel;
-import id.ac.umn.myumn.CourseActivity;
 import id.ac.umn.myumn.Menu;
 import id.ac.umn.myumn.Notification;
 import id.ac.umn.myumn.R;

@@ -1,4 +1,4 @@
-package id.ac.umn.myumn;
+package id.ac.umn.myumn.Course;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.umn.myumn.Course.CourseModel;
+import id.ac.umn.myumn.R;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -67,6 +68,7 @@ public class CourseActivity extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
+                ///Transisi (keluar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });

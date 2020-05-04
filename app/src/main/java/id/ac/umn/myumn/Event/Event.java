@@ -29,6 +29,7 @@ import com.google.firebase.firestore.Query;
 import java.util.HashMap;
 import java.util.Map;
 
+import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Menu;
 import id.ac.umn.myumn.Notification;
 import id.ac.umn.myumn.R;
@@ -72,6 +73,16 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
                 startActivity(i);
                 //Transisi (buka sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+
+        btnNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Event.this, Notification.class);
+                startActivity(i);
+                //Transisi (buka sidebar) dari kiri ke kanan
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

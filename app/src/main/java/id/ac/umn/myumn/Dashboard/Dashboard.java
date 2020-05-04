@@ -42,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
-    Button btnMenu, btnNotif, btnEvent, btnSchedule, btnCourse, btnAttendance;
+    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnAttendance;
     private static final String KEY_TITLE = "title";
 
 
