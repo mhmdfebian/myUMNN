@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Event.EventDetail"></activity>
+        <activity android:name=".Attendance.AttendanceDetail"></activity>
+        <activity android:name=".Attendance.Attendance" />
+        <activity android:name=".Event.EventDetail" />
         <activity android:name=".Skkm" />
         <activity android:name=".Event.Event" />
         <activity android:name=".Schedule" />

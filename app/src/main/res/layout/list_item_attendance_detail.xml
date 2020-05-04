@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:text="Topic"
+        android:textColor="@color/Secondary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/present"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:layout_below="@id/week"
+        android:text="present"
+        android:textColor="@color/Secondary"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/gilroy_medium"
+        android:layout_below="@id/present"
+        android:text="Topic"
+        android:textColor="@color/Secondary"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

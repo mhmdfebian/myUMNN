@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Event.Event;
 import id.ac.umn.myumn.Menu;
@@ -41,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
-    Button btnMenu, btnNotif, btnEvent, btnSchedule, btnCourse;
+    Button btnMenu, btnNotif, btnEvent, btnSchedule, btnCourse, btnAttendance;
     private static final String KEY_TITLE = "title";
 
 
@@ -57,9 +58,11 @@ public class Dashboard extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
 
+
         btnSchedule = findViewById(R.id.btnSchedule);
         btnEvent = findViewById(R.id.btnEvent);
         btnCourse = findViewById(R.id.btnCourse);
+        btnAttendance = findViewById(R.id.btnAttendance);
 
         Name = findViewById(R.id.Name);
 
@@ -106,6 +109,14 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Dashboard.this, Course.class);
+                startActivity(i);
+            }
+        });
+
+        btnAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, Attendance.class);
                 startActivity(i);
             }
         });

@@ -72,25 +72,26 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Silahkan Input Email", Toast.LENGTH_SHORT).show();
                 } else if (password.equals("")) {
                     Toast.makeText(Login.this, "Silahkan Input Password", Toast.LENGTH_SHORT).show();
-                }
+                }else {
 
-                mAuth.signInWithEmailAndPassword(uname, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
-                                        @Override
-                                        public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-                                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                    mAuth.signInWithEmailAndPassword(uname, password)
+                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
+                                            @Override
+                                            public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
+                                                startActivity(new Intent(getApplicationContext(), Dashboard.class));
 
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(Login.this, "Login Gagal.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(Login.this, "Login Gagal.", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
 
