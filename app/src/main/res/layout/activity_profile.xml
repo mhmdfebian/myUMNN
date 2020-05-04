@@ -77,7 +77,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@id/iconEmailStudent"
-                android:fontFamily="@font/gilroy_light"
+                android:fontFamily="@font/gilroy_medium"
                 android:text="ultimafriend@student.umn.ac.id"
                 android:textColor="@color/Teritary"
                 android:textSize="16sp" />
@@ -101,7 +101,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@id/iconEmailStudent"
-                android:fontFamily="@font/gilroy_light"
+                android:fontFamily="@font/gilroy_medium"
                 android:text="00000023279"
                 android:textColor="@color/Teritary"
                 android:textSize="16sp" />
@@ -132,9 +132,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="15dp"
-            android:fontFamily="@font/gilroy_light"
+            android:fontFamily="@font/gilroy_medium"
             android:text="Fakultas Teknik dan Informatika"
-            android:textColor="@color/Teritary"
+            android:textColor="@color/TeritaryLight"
             android:textSize="16sp" />
 
         <TextView
@@ -153,9 +153,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="15dp"
-            android:fontFamily="@font/gilroy_light"
+            android:fontFamily="@font/gilroy_medium"
             android:text="Informatika"
-            android:textColor="@color/Teritary"
+            android:textColor="@color/TeritaryLight"
             android:textSize="16sp" />
 
         <TextView
@@ -174,9 +174,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="15dp"
-            android:fontFamily="@font/gilroy_light"
+            android:fontFamily="@font/gilroy_medium"
             android:text="2017"
-            android:textColor="@color/Teritary"
+            android:textColor="@color/TeritaryLight"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -229,7 +229,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/card"
-            android:backgroundTint="@color/bg_light"
+            android:backgroundTint="@color/Primary"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
@@ -242,7 +242,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
                 android:background="@drawable/money"
-                android:backgroundTint="@color/TeritaryLight" />
+                android:backgroundTint="@color/bg_light" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -251,7 +251,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/gilroy_medium"
                 android:text="Financial"
-                android:textColor="@color/TeritaryLight"
+                android:textColor="@color/bg_light"
                 android:textSize="18sp" />
         </RelativeLayout>
 
