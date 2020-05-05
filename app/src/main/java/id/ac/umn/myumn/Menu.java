@@ -38,9 +38,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Dashboard.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -49,9 +49,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Profile.class);
                 startActivity(i);
-                //Transisi (masuk menu) dari kanan ke kiri
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
+                //Transisi (masuk menu) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);;
             }
         });
 
@@ -60,9 +60,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Schedule.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -71,9 +71,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Course.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -82,9 +82,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Event.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -93,9 +93,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Grade.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -104,9 +104,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(Menu.this, Attendance.class);
                 startActivity(i);
+                finish();
                 //Transisi (masuk menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -130,7 +130,6 @@ public class Menu extends AppCompatActivity {
                 finishAffinity();
                 //Transisi (logout) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
             }
         });
     }

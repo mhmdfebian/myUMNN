@@ -28,6 +28,8 @@ public class Grade extends AppCompatActivity {
         btnNotif = findViewById(R.id.btnNotif);
         lvGrade = findViewById(R.id.listviewGrade);
 
+        spinnerGrade = findViewById(R.id.spinnerGrade);
+
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +49,6 @@ public class Grade extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
-
-        spinnerGrade = findViewById(R.id.spinnerGrade);
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
                 Grade.this, R.layout.spinner, getResources().getStringArray(R.array.semester));

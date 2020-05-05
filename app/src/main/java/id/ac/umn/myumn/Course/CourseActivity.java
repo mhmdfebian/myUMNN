@@ -68,7 +68,7 @@ public class CourseActivity extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
-                ///Transisi (keluar) dari kiri ke kanan
+                //Transisi (keluar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -119,6 +119,7 @@ public class CourseActivity extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
+        //Transisi (keluar) dari kiri ke kanan
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

@@ -90,7 +90,7 @@
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_below="@id/desc"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="18dp"
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@id/date"
                 android:src="@drawable/location"

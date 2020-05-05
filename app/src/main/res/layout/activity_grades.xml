@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Primary"
+    android:orientation="vertical"
+    tools:context=".Notification">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnMenu"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/menus"
+            android:backgroundTint="@color/Teritary" />
+
+        <Button
+            android:id="@+id/btnNotif"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="314dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bell"
+            android:backgroundTint="@color/Teritary" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/spinnerCourse"
+            android:background="@drawable/homework"
+            android:backgroundTint="@color/PrimaryDarker"
+            android:padding="0dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/spinnerCourse"
+            android:text="IPK"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textColor="@color/bg_dark"
+            android:textSize="22sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/spinnerCourse"
+            android:text="3.30"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textColor="@color/bg_dark"
+            android:textSize="22sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@id/spinnerCourse"
+            android:text="IPS"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textColor="@color/bg_dark"
+            android:textSize="22sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="60dp"
+            android:layout_toEndOf="@id/spinnerCourse"
+            android:text="3.30"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textColor="@color/bg_dark"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/Course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:textColor="@color/bg_dark"
+            android:text="Grades"
+            android:textSize="30sp" />
+
+        <Spinner
+            android:id="@+id/spinnerCourse"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Course"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/Primary"
+            android:entries="@array/semester"
+            android:spinnerMode="dropdown" />
+
+
+        <GridLayout
+            android:layout_below="@id/spinnerCourse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:layout_gravity="center"
+            android:columnCount="1"
+            android:rowCount="25"
+            android:alignmentMode="alignMargins"
+            android:background="@drawable/card_bg"
+            android:backgroundTint="@color/bg_dark"
+            android:columnOrderPreserved="false"
+            android:orientation="horizontal"
+            >
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="3"
+                android:rowCount="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/Secondary"
+                    android:layout_gravity="start"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.30"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/Teritary"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A-"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:textColor="@color/Secondary"
+                    android:textSize="20sp" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="3"
+                android:rowCount="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/Primary"
+                    android:layout_gravity="start"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.30"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:textColor="@color/Primary"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A-"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:textColor="@color/Primary"
+                    android:textSize="20sp" />
+            </GridLayout>
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="3"
+                android:rowCount="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:background="@drawable/card"
+                android:backgroundTint="@color/bg_light"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="English"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/Primary"
+                    android:layout_gravity="start"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.30"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:textColor="@color/Primary"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A-"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/gilroy_extrabold"
+                    android:textColor="@color/Primary"
+                    android:textSize="20sp" />
+            </GridLayout>
+
+
+
+
+
+
+
+        </GridLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

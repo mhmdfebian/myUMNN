@@ -82,8 +82,6 @@ public class EventDetail extends AppCompatActivity {
         tvDate.setText(eventDate);
         tvLocation.setText(eventLocation);
 
-
-
         if(upadd) {
             btnAdd.setBackgroundResource(R.drawable.close);
             btnAdd.setOnClickListener(new View.OnClickListener() {
