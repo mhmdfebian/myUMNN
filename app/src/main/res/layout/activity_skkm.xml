@@ -33,16 +33,25 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/SKKM"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="6dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/gilroy_extrabold"
             android:text="SKKM Points"
             android:textColor="@color/Primary"
             android:textSize="30sp" />
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/favorite"
+            android:tint="@color/Primary"
+            android:layout_toEndOf="@id/SKKM"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -119,7 +128,7 @@
                     android:layout_toEndOf="@id/tvIP"
                     android:fontFamily="@font/gilroy_medium"
                     android:layout_marginEnd="28dp"
-                    android:text=" / 0"
+                    android:text=" / 6"
                     android:textColor="@color/Primary"
                     android:textSize="29sp" />
 
@@ -165,7 +174,7 @@
                     android:layout_toEndOf="@id/tvBM"
                     android:fontFamily="@font/gilroy_medium"
                     android:layout_marginEnd="28dp"
-                    android:text=" / 0"
+                    android:text=" / 4"
                     android:textColor="@color/Primary"
                     android:textSize="29sp" />
 
@@ -211,7 +220,7 @@
                     android:layout_toEndOf="@id/tvOPK"
                     android:fontFamily="@font/gilroy_medium"
                     android:layout_marginEnd="28dp"
-                    android:text=" / 0"
+                    android:text=" / 6"
                     android:textColor="@color/Primary"
                     android:textSize="29sp" />
 
@@ -225,14 +234,14 @@
                     android:text="Organisasi dan Pengembangan Kepribadian"
                     android:textAlignment="center"
                     android:textColor="@color/Primary"
-                    android:textSize="10sp" />
+                    android:textSize="11.23sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="180dp"
                 android:layout_height="130dp"
                 android:layout_marginStart="9.5dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/card"
                 android:backgroundTint="@color/bg_light"
@@ -256,7 +265,7 @@
                     android:layout_toEndOf="@id/tvPM"
                     android:fontFamily="@font/gilroy_medium"
                     android:layout_marginEnd="28dp"
-                    android:text=" / 0"
+                    android:text=" / 4"
                     android:textColor="@color/Primary"
                     android:textSize="29sp" />
 

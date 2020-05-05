@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Primary"
     android:orientation="vertical"
-    tools:context=".Event.Event">
+    tools:context=".Grade">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,52 +44,51 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="24dp"
-            android:layout_toEndOf="@id/spinnerEvent"
-            android:background="@drawable/fireworks"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/spinnerGrade"
+            android:background="@drawable/grade"
             android:backgroundTint="@color/PrimaryDarker"
             android:padding="0dp" />
 
         <TextView
-            android:id="@+id/Event"
+            android:id="@+id/Grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="34dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/gilroy_extrabold"
-            android:text="Event"
+            android:text="Grade"
             android:textColor="@color/bg_dark"
             android:textSize="30sp" />
 
         <Spinner
-            android:id="@+id/spinnerEvent"
-            android:layout_width="105dp"
+            android:id="@+id/spinnerGrade"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Event"
+            android:layout_below="@id/Grade"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@color/Primary"
-            android:entries="@array/event"
+            android:entries="@array/semester"
             android:spinnerMode="dropdown" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/spinnerEvent"
+            android:layout_below="@id/spinnerGrade"
             android:layout_marginTop="26dp"
             android:background="@drawable/card_bg"
             android:backgroundTint="@color/bg_dark"
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listviewEvent"
+                android:id="@+id/listviewGrade"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="36dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp" />
         </LinearLayout>
 

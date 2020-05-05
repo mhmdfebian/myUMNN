@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Primary"
-    android:orientation="vertical"
-    tools:context=".Notification">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,9 +43,10 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
             android:layout_toEndOf="@id/spinnerAttendance"
-            android:background="@drawable/homework"
+            android:background="@drawable/checklist"
             android:backgroundTint="@color/PrimaryDarker"
             android:padding="0dp" />
 
@@ -87,7 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" />
         </LinearLayout>
 
     </RelativeLayout>

@@ -32,6 +32,10 @@ public class Notification extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke Menu bar lagi
+        Intent intentBack = new Intent();
+        setResult(RESULT_OK, intentBack);
+        finish();
+        //Transisi (keluar) dari kiri ke kanan
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

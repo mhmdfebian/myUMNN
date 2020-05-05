@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class Profile extends AppCompatActivity {
 
-    Button btnMenu, btnNotif, btnSKKM;
+    Button btnMenu, btnNotif, btnSKKM, btnFinancial;
     TextView Name, EmailStudent , Nim, faculty, program, year;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
@@ -33,6 +33,7 @@ public class Profile extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
         btnSKKM = findViewById(R.id.btnSKKM);
+        btnFinancial = findViewById(R.id.btnFinancial);
 
         Name = findViewById(R.id.Name);
         EmailStudent = findViewById(R.id.EmailStudent);
@@ -70,6 +71,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Profile.this, Skkm.class);
+                startActivity(i);
+            }
+        });
+
+        btnFinancial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Profile.this, Financial.class);
                 startActivity(i);
             }
         });

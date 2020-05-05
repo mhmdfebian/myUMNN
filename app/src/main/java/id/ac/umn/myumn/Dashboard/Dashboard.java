@@ -27,6 +27,7 @@ import java.util.List;
 import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Event.Event;
+import id.ac.umn.myumn.Grade;
 import id.ac.umn.myumn.Menu;
 import id.ac.umn.myumn.Notification;
 import id.ac.umn.myumn.R;
@@ -42,7 +43,7 @@ public class Dashboard extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
-    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnAttendance;
+    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
     private static final String KEY_TITLE = "title";
 
 
@@ -60,8 +61,9 @@ public class Dashboard extends AppCompatActivity {
 
 
         btnSchedule = findViewById(R.id.btnSchedule);
-        btnEvent = findViewById(R.id.btnEvent);
         btnCourse = findViewById(R.id.btnCourse);
+        btnEvent = findViewById(R.id.btnEvent);
+        btnGrade = findViewById(R.id.btnGrade);
         btnAttendance = findViewById(R.id.btnAttendance);
 
         Name = findViewById(R.id.Name);
@@ -113,10 +115,10 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        btnAttendance.setOnClickListener(new View.OnClickListener() {
+        btnGrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Dashboard.this, Attendance.class);
+                Intent i = new Intent(Dashboard.this, Grade.class);
                 startActivity(i);
             }
         });
@@ -125,6 +127,14 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Dashboard.this, Event.class);
+                startActivity(i);
+            }
+        });
+
+        btnAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, Attendance.class);
                 startActivity(i);
             }
         });

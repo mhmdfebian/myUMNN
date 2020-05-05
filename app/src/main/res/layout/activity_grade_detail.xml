@@ -21,9 +21,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:padding="12dp"
             android:background="@drawable/close"
-            android:backgroundTint="@color/TeritaryLight" />
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
     </LinearLayout>
 
     <RelativeLayout
@@ -32,66 +32,29 @@
         android:layout_marginBottom="50dp">
 
         <TextView
-            android:id="@+id/Attendance"
-            android:layout_width="wrap_content"
+            android:id="@+id/Subject"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/gilroy_extrabold"
-            android:text="Course"
+            android:text="Subject"
             android:textColor="@color/Primary"
             android:textSize="30sp" />
 
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="14dp"
-            android:text="Week"
-            android:fontFamily="@font/gilroy_medium"
-            android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="32dp"
-            android:textAlignment="center"
-            android:text="Present"
-            android:fontFamily="@font/gilroy_medium"
-            android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:textAlignment="center"
-            android:text="Date"
-            android:fontFamily="@font/gilroy_medium"
-            android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="36dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listviewAttendanceDetail"
+            android:id="@+id/listviewGrade"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

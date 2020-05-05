@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
-    android:orientation="vertical"
-    tools:context=".Notification">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,9 +21,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:padding="12dp"
             android:background="@drawable/close"
-            android:backgroundTint="@color/TeritaryLight" />
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
     </LinearLayout>
 
     <RelativeLayout
@@ -49,16 +48,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listviewCourse"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

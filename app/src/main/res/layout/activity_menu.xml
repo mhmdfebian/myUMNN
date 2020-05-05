@@ -32,8 +32,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -45,7 +45,7 @@
                 android:id="@+id/btnDashboard"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Dashboard"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -61,8 +61,8 @@
             android:layout_marginTop="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -74,7 +74,7 @@
                 android:id="@+id/btnProfile"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Profile"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="36dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,8 +96,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -109,7 +109,7 @@
                 android:id="@+id/btnSchedule"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Schedule"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -125,8 +125,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -138,7 +138,7 @@
                 android:id="@+id/btnCourse"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Course"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -154,8 +154,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -167,7 +167,7 @@
                 android:id="@+id/btnEvent"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Event"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -183,8 +183,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -196,7 +196,7 @@
                 android:id="@+id/btnGrade"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Grade"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -212,8 +212,8 @@
             android:layout_marginBottom="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -225,7 +225,7 @@
                 android:id="@+id/btnAttendance"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Attendance"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -240,8 +240,8 @@
             android:layout_marginTop="4dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -253,7 +253,7 @@
                 android:id="@+id/btnEnrollment"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Enrollment"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"
@@ -267,15 +267,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="36dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
@@ -287,7 +287,7 @@
                 android:id="@+id/btnLogout"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="46dp"
                 android:text="Log Out"
                 android:fontFamily="@font/gilroy_medium"
                 android:textAlignment="textStart"

@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Attendance.AttendanceDetail"></activity>
+        <activity android:name=".list_item_grade"></activity>
+        <activity android:name=".Financial" />
+        <activity android:name=".Grade" />
+        <activity android:name=".Attendance.AttendanceDetail" />
         <activity android:name=".Attendance.Attendance" />
         <activity android:name=".Event.EventDetail" />
         <activity android:name=".Skkm" />

@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/week"
-        android:layout_width="match_parent"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/gilroy_medium"
-        android:text="Topic"
-        android:textColor="@color/Secondary"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="@color/Teritary"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/present"
-        android:layout_width="match_parent"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/gilroy_medium"
-        android:layout_below="@id/week"
-        android:text="present"
+        android:text="•"
+        android:textAlignment="center"
         android:textColor="@color/Secondary"
         android:textSize="18sp" />
     <TextView
         android:id="@+id/date"
-        android:layout_width="match_parent"
+        android:layout_width="242dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/gilroy_medium"
-        android:layout_below="@id/present"
-        android:text="Topic"
-        android:textColor="@color/Secondary"
+        android:text="12 May 2020"
+        android:textAlignment="center"
+        android:textColor="@color/Teritary"
         android:textSize="18sp" />
 
 
-</RelativeLayout>
+</LinearLayout>

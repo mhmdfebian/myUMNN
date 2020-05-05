@@ -43,7 +43,6 @@ public class AttendanceDetail extends AppCompatActivity {
     TextView tvAttendance;
 
 
-
     private FirestoreRecyclerAdapter adapter;
 
     private List<String> nameList = new ArrayList<>();
@@ -84,17 +83,15 @@ public class AttendanceDetail extends AppCompatActivity {
 
         DocumentReference documentReference = fStore.collection("user").document(userID).collection("attendance").document(attendanceId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                            if(documentSnapshot.exists()){
-                                tvAttendance.setText(documentSnapshot.getString("subject"));
-                            }else {
-                                Log.d("tag", "onEvent: Document do not exists");
-                            }
-                        }
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    tvAttendance.setText(documentSnapshot.getString("subject"));
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
         });
-
-
 
 
         Query query = fStore.collection("user").document(userID).collection("attendance").document(attendanceId).collection("attendances");
@@ -103,11 +100,11 @@ public class AttendanceDetail extends AppCompatActivity {
                 .build();
 
 
-        adapter = new FirestoreRecyclerAdapter<AttendanceModel,AttendanceViewHolder>(options){
+        adapter = new FirestoreRecyclerAdapter<AttendanceModel, AttendanceViewHolder>(options) {
             @NonNull
             @Override
             public AttendanceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_attendance_detail, parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_attendance_detail, parent, false);
                 return new AttendanceViewHolder(view);
             }
 
@@ -126,20 +123,13 @@ public class AttendanceDetail extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intentBack = new Intent();
-        setResult(RESULT_OK, intentBack);
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 
-    private class AttendanceViewHolder extends RecyclerView.ViewHolder{
+    private class AttendanceViewHolder extends RecyclerView.ViewHolder {
         private TextView tvWeek;
         private TextView tvPresent;
         private TextView tvDate;
 
-        public AttendanceViewHolder(@NonNull View itemView){
+        public AttendanceViewHolder(@NonNull View itemView) {
             super(itemView);
             tvWeek = itemView.findViewById(R.id.week);
             tvPresent = itemView.findViewById(R.id.present);
@@ -157,5 +147,13 @@ public class AttendanceDetail extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intentBack = new Intent();
+        setResult(RESULT_OK, intentBack);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

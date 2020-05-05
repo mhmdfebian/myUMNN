@@ -16,7 +16,7 @@ import id.ac.umn.myumn.Event.Event;
 
 public class Menu extends AppCompatActivity {
 
-    Button btnClose, btnSchedule, btnDashboard, btnProfile, btnCourse, btnEvent, btnAttendance, btnLogout;
+    Button btnClose, btnSchedule, btnDashboard, btnProfile, btnCourse, btnEvent, btnGrade, btnAttendance, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class Menu extends AppCompatActivity {
         btnSchedule = findViewById(R.id.btnSchedule);
         btnCourse = findViewById(R.id.btnCourse);
         btnEvent = findViewById(R.id.btnEvent);
+        btnGrade = findViewById(R.id.btnGrade);
         btnAttendance = findViewById(R.id.btnAttendance);
         btnLogout = findViewById(R.id.btnLogout);
 
@@ -87,6 +88,17 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        btnGrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, Grade.class);
+                startActivity(i);
+                //Transisi (masuk menu) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +139,8 @@ public class Menu extends AppCompatActivity {
     public void onBackPressed() {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
+        //Transisi (keluar) dari kanan ke kiri
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
