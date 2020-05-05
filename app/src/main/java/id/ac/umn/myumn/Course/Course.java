@@ -7,8 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import id.ac.umn.myumn.Menu;
@@ -32,6 +37,9 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
     String userID;
+    Query query;
+    TextView course;
+    String selectedItem;
 
     private CourseAdapter adapter;
 
@@ -46,6 +54,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
         lvCourse = findViewById(R.id.listviewCourse);
+        course = findViewById(R.id.Course);
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -79,16 +88,32 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
         spinnerCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String selectedItem = spinnerCourse.getItemAtPosition(position).toString();
+               selectedItem = spinnerCourse.getItemAtPosition(position).toString();
+
+                if (selectedItem.equals("1st Semester")) {
+                    semesterCourse(selectedItem);
+
+                } else if (selectedItem.equals("2nd Semester")) {
+                    semesterCourse(selectedItem);
+                }
+
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+    }
 
-        Query query = fStore.collection("user").document(userID).collection("course");
+    public void semesterCourse(String selectedItem) {
+
+        query = fStore.collection("user").document(userID).collection("course").document("Semester").collection(selectedItem);
         FirestoreRecyclerOptions<CourseModel>options = new FirestoreRecyclerOptions.Builder<CourseModel>()
                 .setQuery(query, new SnapshotParser<CourseModel>() {
                     @NonNull
@@ -102,34 +127,19 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
                 })
                 .build();
         adapter = new CourseAdapter(options,this);
-
         lvCourse.setHasFixedSize(true);
         lvCourse.setLayoutManager(new LinearLayoutManager(this));
         lvCourse.setAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        adapter.startListening();
     }
 
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Intent pindah = new Intent(Course.this, CourseActivity.class);
-        startActivity(pindah.putExtra("courseID", snapshot.getId()));
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
+        startActivity(pindah
+                .putExtra("semester", selectedItem)
+                .putExtra("courseID", snapshot.getId()));
     }
 
 }

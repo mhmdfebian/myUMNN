@@ -119,9 +119,6 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
         });
 
 
-
-
-
     }
 
     @Override

@@ -27,12 +27,11 @@ import java.util.List;
 import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Event.Event;
-import id.ac.umn.myumn.Grade;
+import id.ac.umn.myumn.Grade.Grade;
 import id.ac.umn.myumn.Menu;
 import id.ac.umn.myumn.Notification;
 import id.ac.umn.myumn.R;
 import id.ac.umn.myumn.Schedule;
-import id.ac.umn.myumn.Skkm;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -42,9 +41,10 @@ public class Dashboard extends AppCompatActivity {
     List<Model> models;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID;
+    String userID, semester, semester2;
     Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
     private static final String KEY_TITLE = "title";
+    private static final String KEY_SEMESTER = "semester";
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -69,6 +69,8 @@ public class Dashboard extends AppCompatActivity {
         Name = findViewById(R.id.Name);
 
         models = new ArrayList<>();
+
+
 
         adapter = new Adapter(models, this);
 
@@ -146,42 +148,43 @@ public class Dashboard extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
                     Name.setText("Hello, " + documentSnapshot.getString("nickname"));
+                    semester = documentSnapshot.getString("semester");
+                    fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester)
+                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                                    if (!queryDocumentSnapshots.isEmpty()) {
+                                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                                        for (DocumentSnapshot d : list) {
+                                            fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(d.getId()).collection("topics")
+                                                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onEvent(@javax.annotation.Nullable QuerySnapshot querySnap, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                                                            if (!querySnap.isEmpty()) {
+                                                                List<DocumentSnapshot> list = querySnap.getDocuments();
+                                                                for (DocumentSnapshot x : list) {
+                                                                    if (!x.getString(KEY_TITLE).equals("Materi")) {
+                                                                        Model y = x.toObject(Model.class);
+                                                                        models.add(y);
+                                                                    }
+                                                                }
+                                                                adapter.notifyDataSetChanged();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+                                    }
+                                }
+                            });
+
+
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
 
-        fStore.collection("user").document(userID).collection("course")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for (DocumentSnapshot d : list) {
-                                fStore.collection("user").document(userID).collection("course").document(d.getId()).collection("topics")
-                                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onEvent(@javax.annotation.Nullable QuerySnapshot querySnap, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                                                if (!querySnap.isEmpty()) {
-                                                    List<DocumentSnapshot> list = querySnap.getDocuments();
-                                                    for (DocumentSnapshot x : list) {
-                                                        if (!x.getString(KEY_TITLE).equals("Materi")) {
-                                                            Model y = x.toObject(Model.class);
-                                                            models.add(y);
-                                                        }
-//                                                        if (!x.getString(KEY_TITLE).equals("Materi")) {
-//
-//                                                        }
-                                                    }
-                                                    adapter.notifyDataSetChanged();
-                                                }
-                                            }
-                                        });
-                            }
-                        }
-                    }
-                });
+
     }
 
     @Override

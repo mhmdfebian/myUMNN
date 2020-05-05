@@ -104,6 +104,13 @@ public class Schedule extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 String selectedItem = spinnerSchedule.getItemAtPosition(position).toString();
+
+                if (selectedItem.equals("Weekly Schedule")) {
+                    schedule(selectedItem);
+
+                } else if (selectedItem.equals("Exam Schedule")) {
+                    schedule(selectedItem);
+                }
             }
 
             @Override
@@ -112,61 +119,68 @@ public class Schedule extends AppCompatActivity {
             }
         });
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("schedule").document("schedule1");
+
+    }
+
+    private void schedule(String selectedItem) {
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("schedule").document(selectedItem);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
                     text = documentSnapshot.getString("filename");
                     Log.d("tag", text);
+                    mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/schedule").child(text);
+                    try {
+                        final File file = File.createTempFile("image", "jpeg");
+                        mStorageRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                                imgSchedule.setImageBitmap(bitmap);
+                                btnSave.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if (ContextCompat.checkSelfPermission(Schedule.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                                            String NamaFolder = Environment.getExternalStorageDirectory() + "/Images/";
+                                            File directory = new File(NamaFolder);
+                                            if (!directory.exists()) {
+                                                directory.mkdirs();
+                                            }
+                                            String namafile = text+".jpg";
+                                            String namaaa = NamaFolder + namafile;
+                                            try {
+                                                outputStream = new FileOutputStream(namaaa, true);
+                                                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                                                Toast.makeText(Schedule.this, "Schedule Saved", Toast.LENGTH_SHORT).show();
+                                            } catch (FileNotFoundException e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else {
+                                            // Request permission from the user
+                                            ActivityCompat.requestPermissions(Schedule.this,
+                                                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                                        }
+                                    }
+                                });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception f) {
+                                Toast.makeText(Schedule.this, "Image gagal", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } catch (IOException f) {
+                        f.printStackTrace();
+                    }
 
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
-        mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/").child(TEXT_KEY);
-        try {
-            final File file = File.createTempFile("image", "jpeg");
-            mStorageRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                    imgSchedule.setImageBitmap(bitmap);
-                    btnSave.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (ContextCompat.checkSelfPermission(Schedule.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                                String NamaFolder = Environment.getExternalStorageDirectory() + "/Images/";
-                                File directory = new File(NamaFolder);
-                                if (!directory.exists()) {
-                                    directory.mkdirs();
-                                }
-                                String namaaa = NamaFolder + "photo1.jpg";
-                                try {
-                                    outputStream = new FileOutputStream(namaaa, true);
-                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                                    Toast.makeText(Schedule.this, "Schedule Saved", Toast.LENGTH_SHORT).show();
-                                } catch (FileNotFoundException e) {
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                // Request permission from the user
-                                ActivityCompat.requestPermissions(Schedule.this,
-                                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-                            }
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(Schedule.this, "Image gagal", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+
     }
 
     @Override

@@ -37,7 +37,7 @@ public class CourseActivity extends AppCompatActivity {
     RecyclerView lvCourse;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, courseId;
+    String userID, courseId, semester;
     TextView tvCourse, tvTitle, tvTopic;
 
 
@@ -75,10 +75,11 @@ public class CourseActivity extends AppCompatActivity {
 
 
         courseId = pindah.getStringExtra("courseID");
+        semester = pindah.getStringExtra("semester");
         tvCourse.setText(courseId);
 
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document(courseId);
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(courseId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -90,7 +91,7 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
 
-        Query query = fStore.collection("user").document(userID).collection("course").document(courseId).collection("topics");
+        Query query = fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(courseId).collection("topics");
         FirestoreRecyclerOptions<CourseModel> options = new FirestoreRecyclerOptions.Builder<CourseModel>()
                 .setQuery(query, CourseModel.class)
                 .build();

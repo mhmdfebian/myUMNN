@@ -59,6 +59,7 @@ public class Login extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
+
                 }).build();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +84,6 @@ public class Login extends AppCompatActivity {
                                             @Override
                                             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                                                 startActivity(new Intent(getApplicationContext(), Dashboard.class));
-
                                             }
                                         });
                                     } else {

@@ -120,7 +120,6 @@ public class AttendanceDetail extends AppCompatActivity {
         lvAttendance.setHasFixedSize(true);
         lvAttendance.setLayoutManager(new LinearLayoutManager(this));
         lvAttendance.setAdapter(adapter);
-
     }
 
 

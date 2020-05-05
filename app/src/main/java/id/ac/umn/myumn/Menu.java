@@ -13,6 +13,7 @@ import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Dashboard.Dashboard;
 import id.ac.umn.myumn.Event.Event;
+import id.ac.umn.myumn.Grade.Grade;
 
 public class Menu extends AppCompatActivity {
 
