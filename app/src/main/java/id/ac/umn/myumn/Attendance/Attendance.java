@@ -32,6 +32,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
     String userID;
+    String selectedItem;
 
     private AttendanceAdapter adapter;
 
@@ -79,7 +80,13 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
         spinnerAttendance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String selectedItem = spinnerAttendance.getItemAtPosition(position).toString();
+               selectedItem = spinnerAttendance.getItemAtPosition(position).toString();
+                if (selectedItem.equals("1st Semester")) {
+                    semesterAttendance(selectedItem);
+
+                } else if (selectedItem.equals("2nd Semester")) {
+                    semesterAttendance(selectedItem);
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -88,7 +95,12 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
         });
 
 
-        Query query = fStore.collection("user").document(userID).collection("attendance");
+
+    }
+
+    private void semesterAttendance(String selectedItem) {
+
+        Query query = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(selectedItem);
         FirestoreRecyclerOptions<AttendanceModel>options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, new SnapshotParser<AttendanceModel>() {
                     @NonNull
@@ -106,6 +118,8 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
         lvAttendance.setHasFixedSize(true);
         lvAttendance.setLayoutManager(new LinearLayoutManager(this));
         lvAttendance.setAdapter(adapter);
+        adapter.startListening();
+
     }
 
     @Override
@@ -117,19 +131,21 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Intent pindah = new Intent(Attendance.this, AttendanceDetail.class);
-        startActivity(pindah.putExtra("attendanceID", snapshot.getId()));
+        startActivity(pindah
+                        .putExtra("semester", selectedItem)
+                        .putExtra("attendanceID", snapshot.getId()));
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        adapter.stopListening();
+//    }
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//    }
 
 }

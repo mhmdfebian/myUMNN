@@ -107,7 +107,6 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                 } else if (selectedItem.equals("2nd Semester")) {
                     totaltotalips = 0;
                    grade(selectedItem);
-
                 }
             }
             @Override

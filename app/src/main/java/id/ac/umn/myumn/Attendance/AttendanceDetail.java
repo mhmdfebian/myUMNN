@@ -39,7 +39,7 @@ public class AttendanceDetail extends AppCompatActivity {
     RecyclerView lvAttendance;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, attendanceId;
+    String userID, attendanceId,semester;
     TextView tvAttendance;
 
 
@@ -78,10 +78,11 @@ public class AttendanceDetail extends AppCompatActivity {
 
 
         attendanceId = pindah.getStringExtra("attendanceID");
+        semester = pindah.getStringExtra("semester");
         tvAttendance.setText(attendanceId);
 
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("attendance").document(attendanceId);
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(semester).document(attendanceId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -94,7 +95,7 @@ public class AttendanceDetail extends AppCompatActivity {
         });
 
 
-        Query query = fStore.collection("user").document(userID).collection("attendance").document(attendanceId).collection("attendances");
+        Query query = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(semester).document(attendanceId).collection("attendance");
         FirestoreRecyclerOptions<AttendanceModel> options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, AttendanceModel.class)
                 .build();

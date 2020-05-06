@@ -41,10 +41,9 @@ public class Dashboard extends AppCompatActivity {
     List<Model> models;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID, semester, semester2;
+    String userID, semester;
     Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
     private static final String KEY_TITLE = "title";
-    private static final String KEY_SEMESTER = "semester";
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -69,7 +68,6 @@ public class Dashboard extends AppCompatActivity {
         Name = findViewById(R.id.Name);
 
         models = new ArrayList<>();
-
 
 
         adapter = new Adapter(models, this);
@@ -177,14 +175,11 @@ public class Dashboard extends AppCompatActivity {
                                 }
                             });
 
-
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
-
-
     }
 
     @Override
