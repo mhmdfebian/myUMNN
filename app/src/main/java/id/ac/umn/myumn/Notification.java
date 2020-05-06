@@ -45,10 +45,7 @@ public class Notification extends AppCompatActivity {
         Atas.setText("Reminder");
         Bawah.setText(title);
 
-
-
     }
-
 
     @Override
     public void onBackPressed() {

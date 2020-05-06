@@ -47,26 +47,43 @@
             android:textSize="30sp" />
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/Atas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/gilroy_medium"
             android:text="Atas"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:textSize="20sp"
-            android:layout_marginStart="6dp" />
+            android:textColor="@color/Secondary"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/Bawah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_below="@id/topic"
+            android:layout_toEndOf="@id/iconTitle"
+            android:fontFamily="@font/gilroy_medium"
             android:text="Bawah"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:textSize="20sp"
-            android:layout_marginStart="6dp" />
+            android:textColor="@color/TeritaryLight"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/title"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/card"
+            android:tint="@color/TeritaryLight" />
     </LinearLayout>
 
 </LinearLayout>

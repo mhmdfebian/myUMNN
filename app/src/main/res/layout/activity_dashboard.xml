@@ -9,10 +9,9 @@
     android:orientation="vertical"
     tools:context=".Dashboard.Dashboard">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btnMenu"
@@ -30,254 +29,263 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginStart="314dp"
+            android:layout_marginStart="360dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bell"
             android:backgroundTint="@color/Teritary" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="60dp"
+            android:background="@drawable/dots_myumn"
+            android:backgroundTint="@color/PrimaryDark"
+            android:padding="0dp" />
 
         <TextView
             android:id="@+id/Name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@id/btnMenu"
             android:fontFamily="@font/gilroy_light"
             android:text="Hello, Ultimafriend"
             android:textAlignment="center"
             android:textColor="@color/Secondary"
             android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/card_bg"
-        android:backgroundTint="@color/bg_dark"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/activityDashboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/gilroy_extrabold"
-            android:text="Activity"
-            android:textColor="@color/Primary"
-            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="185dp">
+            android:layout_height="match_parent"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/card_bg"
+            android:backgroundTint="@color/bg_dark"
+            android:orientation="vertical">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
+            <TextView
+                android:id="@+id/activityDashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/gilroy_extrabold"
+                android:text="Activity"
+                android:textColor="@color/Primary"
+                android:textSize="30sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:foregroundGravity="center"
-                android:overScrollMode="never"/>
+                android:layout_height="185dp">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:foregroundGravity="center"
+                    android:overScrollMode="never"/>
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="323dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/card_bg"
+                android:backgroundTint="@color/bg_light"
+                android:columnCount="3"
+                android:rowCount="2">
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18.5dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="18.5dp"
+                    android:layout_marginBottom="6dp">
+
+                    <Button
+                        android:id="@+id/btnSchedule"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/appointment"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnSchedule"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Schedule"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="6dp">
+
+                    <Button
+                        android:id="@+id/btnCourse"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/homework"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnCourse"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Course"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18.5dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="18.5dp"
+                    android:layout_marginBottom="6dp">
+
+                    <Button
+                        android:id="@+id/btnEvent"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/fireworks"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnEvent"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Event"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18.5dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="18.5dp"
+                    android:layout_marginBottom="24dp">
+
+                    <Button
+                        android:id="@+id/btnGrade"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/grade"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnGrade"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Grade"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="24dp">
+
+                    <Button
+                        android:id="@+id/btnAttendance"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/checklist"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnAttendance"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Attendance"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="18.5dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="18.5dp"
+                    android:layout_marginBottom="24dp">
+
+                    <Button
+                        android:id="@+id/btnEnrollment"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/calendar"
+                        android:backgroundTint="@color/Primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btnEnrollment"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Enrollment"
+                        android:textAlignment="center"
+                        android:textColor="@color/Primary"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+            </GridLayout>
+
         </LinearLayout>
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="323dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/card_bg"
-            android:backgroundTint="@color/bg_light"
-            android:columnCount="3"
-            android:rowCount="2">
+    </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18.5dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="18.5dp"
-                android:layout_marginBottom="6dp">
 
-                <Button
-                    android:id="@+id/btnSchedule"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/appointment"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnSchedule"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Schedule"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginBottom="6dp">
-
-                <Button
-                    android:id="@+id/btnCourse"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/homework"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnCourse"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Course"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18.5dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="18.5dp"
-                android:layout_marginBottom="6dp">
-
-                <Button
-                    android:id="@+id/btnEvent"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/fireworks"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnEvent"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Event"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18.5dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="18.5dp"
-                android:layout_marginBottom="24dp">
-
-                <Button
-                    android:id="@+id/btnGrade"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/grade"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnGrade"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Grade"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginBottom="24dp">
-
-                <Button
-                    android:id="@+id/btnAttendance"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/checklist"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnAttendance"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Attendance"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="18.5dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="18.5dp"
-                android:layout_marginBottom="24dp">
-
-                <Button
-                    android:id="@+id/btnEnrollment"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/calendar"
-                    android:backgroundTint="@color/Primary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/btnEnrollment"
-                    android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="Enrollment"
-                    android:textAlignment="center"
-                    android:textColor="@color/Primary"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-        </GridLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

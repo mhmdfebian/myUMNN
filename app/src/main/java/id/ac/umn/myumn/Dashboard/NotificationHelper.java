@@ -53,7 +53,7 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Reminder")
                 .setContentText("Your " + title + "is due")
-                .setSmallIcon(R.drawable.arrow_down)
+                .setSmallIcon(R.drawable.icon_myumn)
                 .setContentIntent(pIntent);
     }
 }

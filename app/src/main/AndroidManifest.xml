@@ -12,12 +12,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_launch_myumn"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".list_item_grade"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".Dashboard.Dashboard" />
+        <activity android:name=".list_item_grade" />
         <activity android:name=".Financial" />
         <activity android:name=".Grade.Grade" />
         <activity android:name=".Attendance.AttendanceDetail" />
@@ -31,19 +32,18 @@
         <activity android:name=".Notification" />
         <activity android:name=".Profile" />
         <activity android:name=".Menu" />
-        <activity android:name=".Login">
+        <activity android:name=".Splash"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard.Dashboard" />
 
-        <receiver android:name=".Dashboard.AlertReceiver"
+        <receiver
+            android:name=".Dashboard.AlertReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
-
 
 </manifest>
