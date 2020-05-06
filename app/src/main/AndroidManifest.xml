@@ -39,6 +39,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard.Dashboard" />
+
+        <receiver android:name=".Dashboard.AlertReceiver"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
+
 
 </manifest>

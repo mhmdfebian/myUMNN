@@ -1,5 +1,8 @@
 package id.ac.umn.myumn.Dashboard;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +24,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import id.ac.umn.myumn.Attendance.Attendance;
@@ -44,7 +51,9 @@ public class Dashboard extends AppCompatActivity {
     String userID, semester;
     Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
     private static final String KEY_TITLE = "title";
+    private static final String KEY_TIME = "time";
 
+    Date date;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -164,6 +173,26 @@ public class Dashboard extends AppCompatActivity {
                                                                     if (!x.getString(KEY_TITLE).equals("Materi")) {
                                                                         Model y = x.toObject(Model.class);
                                                                         models.add(y);
+                                                                        String time = x.getString(KEY_TIME);
+
+                                                                        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+                                                                        try {
+                                                                           date = df.parse(time);
+                                                                        } catch (ParseException ex) {
+                                                                            ex.printStackTrace();
+                                                                        }
+                                                                        Calendar calendar = Calendar.getInstance();
+                                                                        calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
+                                                                        calendar.set(Calendar.MINUTE,date.getMinutes());
+                                                                        calendar.set(Calendar.SECOND, 0);
+
+
+                                                                        if(date == null){
+                                                                            Log.d("tag","gabiasgan");
+                                                                        }else{
+                                                                            Log.d("tag",  String.valueOf(Calendar.getInstance().getTimeInMillis()));
+                                                                        }
+                                                                        startAlarm(calendar);
                                                                     }
                                                                 }
                                                                 adapter.notifyDataSetChanged();
@@ -180,7 +209,21 @@ public class Dashboard extends AppCompatActivity {
                 }
             }
         });
+
+
     }
+
+    private void startAlarm(Calendar calendar) {
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+                intent.putExtra("Week1", "Week 1")
+                        .putExtra("Week2", "Week 2");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
+
 
     @Override
     public void onBackPressed() {
