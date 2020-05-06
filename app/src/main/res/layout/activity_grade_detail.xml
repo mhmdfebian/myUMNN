@@ -46,17 +46,478 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Assingment"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Nilai"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Komposisi"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/asTugas"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Tugas"
+            android:textAlignment="textStart"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/nilaiTugas"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/asTugas"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="100"
+            android:textAlignment="center"
+            android:textColor="@color/Secondary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/kompoTugas"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/nilaiTugas"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="30%"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/asUTS"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asTugas"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="UTS"
+            android:textAlignment="textStart"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/nilaiUTS"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asTugas"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/asUTS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="100"
+            android:textAlignment="center"
+            android:textColor="@color/Secondary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/kompoUTS"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asTugas"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/nilaiUTS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="30%"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/asUAS"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asUTS"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="UAS"
+            android:textAlignment="textStart"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/nilaiUAS"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asUTS"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/asUAS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="100"
+            android:textAlignment="center"
+            android:textColor="@color/Secondary"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/kompoUAS"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/asUTS"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/nilaiUAS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="40%"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="36dp"
-        android:orientation="vertical">
+        android:background="@drawable/card"
+        android:backgroundTint="@color/bg_light">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listviewGrade"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/GradesScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Grades Scale"
+            android:textAlignment="textStart"
+            android:textColor="@color/Teritary"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/Mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/GradesScale"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Mark"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/Grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/GradesScale"
+            android:layout_marginStart="24dp"
+            android:layout_toEndOf="@id/Mark"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Grade"
+            android:textAlignment="center"
+            android:textColor="@color/Teritary"
+            android:textSize="16dp" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Mark"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:columnCount="2"
+            android:rowCount="9">
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="85"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="A"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="80"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="A-"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="75"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="B+"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="70"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="B"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="65"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="B-"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="60"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="C+"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="55"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="C"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="45"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="D"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="@color/Teritary"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="E"
+                android:textAlignment="textStart"
+                android:textColor="@color/Secondary"
+                android:textSize="16dp" />
+
+
+        </GridLayout>
+
+
+    </RelativeLayout>
 
 </LinearLayout>

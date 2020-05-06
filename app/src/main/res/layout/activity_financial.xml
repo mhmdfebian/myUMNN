@@ -235,7 +235,7 @@
             android:layout_toEndOf="@id/sksSKS"
             android:fontFamily="@font/gilroy_medium"
             android:text="Rp 450.000"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/TeritaryLight"
             android:textSize="12dp" />
 
@@ -290,7 +290,7 @@
             android:layout_toEndOf="@id/sksMinat"
             android:fontFamily="@font/gilroy_medium"
             android:text="Rp 450.000"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/TeritaryLight"
             android:textSize="12dp" />
 

@@ -33,12 +33,13 @@
 
         <TextView
             android:id="@+id/Attendance"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/gilroy_extrabold"
-            android:text="Course"
+            android:text="Subject"
             android:textColor="@color/Primary"
             android:textSize="30sp" />
 

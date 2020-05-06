@@ -107,6 +107,7 @@ public class Financial extends AppCompatActivity {
                     DecimalFormat REAL_FORMATTER = new DecimalFormat("0.##");
                     int Biayatetap = documentSnapshot.getLong("biayatetap").intValue();
                     int Biayasks = documentSnapshot.getLong("biayasks").intValue();
+                    int Biayapeminatan = documentSnapshot.getLong("biayapeminatan").intValue();
                     int Sks = documentSnapshot.getLong("sks").intValue();
                     int Skspeminatan = documentSnapshot.getLong("skspeminatan").intValue();
                     int Jumlahsks;
@@ -127,7 +128,7 @@ public class Financial extends AppCompatActivity {
                     tvSemester.setText(documentSnapshot.getString("semester"));
                     tvBiayatetap.setText(formatRupiah.format((double)Biayatetap));
                     tvBiayasks.setText(formatRupiah.format((double)Biayasks));
-                    tvBiayapeminatan.setText(formatRupiah.format((double)Biayasks));
+                    tvBiayapeminatan.setText(formatRupiah.format((double)Biayapeminatan));
                     tvSks.setText(""+Sks);
                     tvSkspeminatan.setText(""+Skspeminatan);
                     tvJumlahsks.setText(formatRupiah.format((double)Jumlahsks));
