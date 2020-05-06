@@ -43,14 +43,16 @@ public class NotificationHelper extends ContextWrapper {
         return mManager;
     }
 
-    public NotificationCompat.Builder getChannelNotification(String a) {
+    public NotificationCompat.Builder getChannelNotification(String title) {
         Intent intent = new Intent(this, Notification.class);
-        intent.putExtra("week1", channelID);
+        intent.putExtra("id", channelID)
+                .putExtra("title",title);
+
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentTitle(a)
-                .setContentText("Your AlarmManager is working.")
+                .setContentTitle("Reminder")
+                .setContentText("Your " + title + "is due")
                 .setSmallIcon(R.drawable.arrow_down)
                 .setContentIntent(pIntent);
     }

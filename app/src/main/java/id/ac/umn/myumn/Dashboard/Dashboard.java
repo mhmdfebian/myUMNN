@@ -192,7 +192,8 @@ public class Dashboard extends AppCompatActivity {
                                                                         }else{
                                                                             Log.d("tag",  String.valueOf(Calendar.getInstance().getTimeInMillis()));
                                                                         }
-                                                                        startAlarm(calendar);
+                                                                        String title = x.getString(KEY_TITLE);
+                                                                        startAlarm(calendar, title);
                                                                     }
                                                                 }
                                                                 adapter.notifyDataSetChanged();
@@ -213,11 +214,10 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
-    private void startAlarm(Calendar calendar) {
+    private void startAlarm(Calendar calendar, String title) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-                intent.putExtra("Week1", "Week 1")
-                        .putExtra("Week2", "Week 2");
+                intent.putExtra("title", title);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
 

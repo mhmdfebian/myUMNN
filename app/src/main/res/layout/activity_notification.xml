@@ -51,11 +51,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="24dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <TextView
+            android:id="@+id/Atas"
+            android:text="Atas"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            android:layout_marginStart="6dp" />
+        <TextView
+            android:id="@+id/Bawah"
+            android:text="Bawah"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="20sp"
             android:layout_marginStart="6dp" />
     </LinearLayout>
 

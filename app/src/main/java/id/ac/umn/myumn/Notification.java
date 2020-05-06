@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import java.util.Date;
 public class Notification extends AppCompatActivity {
 
     Button btnClose;
+    TextView Atas, Bawah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,9 @@ public class Notification extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
 
         btnClose = findViewById(R.id.btnClose);
+
+        Atas = findViewById(R.id.Atas);
+        Bawah = findViewById(R.id.Bawah);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +39,14 @@ public class Notification extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
+        Intent pindah = getIntent();
+        String title = pindah.getStringExtra("title");
+
+        Atas.setText("Reminder");
+        Bawah.setText(title);
+
+
+
     }
 
 
