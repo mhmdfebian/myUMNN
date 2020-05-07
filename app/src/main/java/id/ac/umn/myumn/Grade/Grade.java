@@ -138,14 +138,14 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
 
         final String semester = selectedItem;
 
-        fStore.collection("user").document(userID).collection("grade").document("semester").collection(semester)
+        fStore.collection("user").document(userID).collection("course").document("semester").collection(semester)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                         if (!queryDocumentSnapshots.isEmpty()) {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
-                                fStore.collection("user").document(userID).collection("grade").document("semester").collection(semester).document(d.getId())
+                                fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId())
                                         .addSnapshotListener(Grade.this, new EventListener<DocumentSnapshot>() {
                                             @Override
                                             public void onEvent(@androidx.annotation.Nullable DocumentSnapshot snapshot, @androidx.annotation.Nullable FirebaseFirestoreException e) {
@@ -202,7 +202,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                     }
                 });
 
-        Query query = fStore.collection("user").document(userID).collection("grade").document("semester").collection(selectedItem);
+        Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
         FirestoreRecyclerOptions<GradeModel> options = new FirestoreRecyclerOptions.Builder<GradeModel>()
                 .setQuery(query, new SnapshotParser<GradeModel>() {
                     @NonNull

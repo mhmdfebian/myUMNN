@@ -74,7 +74,7 @@ public class GradeDetail extends AppCompatActivity {
         semester = pindah.getStringExtra("semester");
 
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("grade").document("semester").collection(semester).document(gradeId);
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(gradeId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {

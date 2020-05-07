@@ -82,7 +82,7 @@ public class AttendanceDetail extends AppCompatActivity {
         tvAttendance.setText(attendanceId);
 
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(semester).document(attendanceId);
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(attendanceId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -95,7 +95,7 @@ public class AttendanceDetail extends AppCompatActivity {
         });
 
 
-        Query query = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(semester).document(attendanceId).collection("attendance");
+        Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(attendanceId).collection("attendance");
         FirestoreRecyclerOptions<AttendanceModel> options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, AttendanceModel.class)
                 .build();

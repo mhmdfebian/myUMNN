@@ -157,14 +157,14 @@ public class Dashboard extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     Name.setText("Hello, " + documentSnapshot.getString("nickname"));
                     semester = documentSnapshot.getString("semester");
-                    fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester)
+                    fStore.collection("user").document(userID).collection("course").document("semester").collection(semester)
                             .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
                                     if (!queryDocumentSnapshots.isEmpty()) {
                                         List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                                         for (DocumentSnapshot d : list) {
-                                            fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(d.getId()).collection("topics")
+                                            fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId()).collection("topics")
                                                     .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                                         @Override
                                                         public void onEvent(@javax.annotation.Nullable QuerySnapshot querySnap, @javax.annotation.Nullable FirebaseFirestoreException e) {

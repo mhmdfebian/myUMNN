@@ -113,7 +113,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
     public void semesterCourse(String selectedItem) {
 
-        query = fStore.collection("user").document(userID).collection("course").document("Semester").collection(selectedItem);
+        query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
         FirestoreRecyclerOptions<CourseModel>options = new FirestoreRecyclerOptions.Builder<CourseModel>()
                 .setQuery(query, new SnapshotParser<CourseModel>() {
                     @NonNull

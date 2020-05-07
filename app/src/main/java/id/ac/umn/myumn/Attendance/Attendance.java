@@ -100,7 +100,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
 
     private void semesterAttendance(String selectedItem) {
 
-        Query query = fStore.collection("user").document(userID).collection("attendance").document("semester").collection(selectedItem);
+        Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
         FirestoreRecyclerOptions<AttendanceModel>options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, new SnapshotParser<AttendanceModel>() {
                     @NonNull

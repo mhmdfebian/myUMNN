@@ -79,7 +79,7 @@ public class CourseActivity extends AppCompatActivity {
         tvCourse.setText(courseId);
 
 
-        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(courseId);
+        DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(courseId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -91,7 +91,7 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
 
-        Query query = fStore.collection("user").document(userID).collection("course").document("Semester").collection(semester).document(courseId).collection("topics");
+        Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(courseId).collection("topics");
         FirestoreRecyclerOptions<CourseModel> options = new FirestoreRecyclerOptions.Builder<CourseModel>()
                 .setQuery(query, CourseModel.class)
                 .build();
