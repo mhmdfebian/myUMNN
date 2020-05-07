@@ -19,9 +19,10 @@ public class AlertReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String test = intent.getStringExtra("title");
+        String title = intent.getStringExtra("title");
+        String subject = intent.getStringExtra("subject");
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        NotificationCompat.Builder nb = notificationHelper.getChannelNotification(test);
+        NotificationCompat.Builder nb = notificationHelper.getChannelNotification(title, subject);
         notificationHelper.getManager().notify(1, nb.build());
 
     }

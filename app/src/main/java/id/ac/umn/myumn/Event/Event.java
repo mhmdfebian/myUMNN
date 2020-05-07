@@ -44,7 +44,6 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
     String userID, eventID, eventIDD, eventName, eventDate, eventTime, eventLocation, eventDesc;
     RecyclerView lvEvent;
     private EventAdapter adapter;
-    private EventAddedAdapter adapteradded;
     Query query;
     EventModel eventModel1;
     boolean upadd;

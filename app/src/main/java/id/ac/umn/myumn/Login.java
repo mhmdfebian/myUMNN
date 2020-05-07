@@ -14,6 +14,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,12 +30,13 @@ import id.ac.umn.myumn.Dashboard.Dashboard;
 public class Login extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    TextView alertLogin;
     EditText etEmail, etPass;
     Button btnLogin, btnShowHide;
     boolean status;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,20 +49,9 @@ public class Login extends AppCompatActivity {
         etPass = findViewById(R.id.passHint);
         btnLogin = findViewById(R.id.btnSign);
         btnShowHide = findViewById(R.id.btnShow);
+        alertLogin = findViewById(R.id.alertLogin);
 
         final Executor executor = Executors.newSingleThreadExecutor();
-
-        final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(this)
-                .setTitle("Fingerpint")
-                .setSubtitle("Subtitle")
-                .setDescription("Description")
-                .setNegativeButton("Cancel", executor, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-
-                }).build();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +60,12 @@ public class Login extends AppCompatActivity {
                 String uname = etEmail.getText().toString();
                 String password = etPass.getText().toString();
 
-                if (uname.equals("")) {
-                    Toast.makeText(Login.this, "Silahkan Input Email", Toast.LENGTH_SHORT).show();
+                if (uname.equals("") && password.equals("")) {
+                    alertLogin.setText("Please retype your Student Email and Password");
                 } else if (password.equals("")) {
-                    Toast.makeText(Login.this, "Silahkan Input Password", Toast.LENGTH_SHORT).show();
+                    alertLogin.setText("Please retype your Password");
+                } else  if (uname.equals("")) {
+                    alertLogin.setText("Please retype your Student Email");
                 }else {
 
                     mAuth.signInWithEmailAndPassword(uname, password)
@@ -80,14 +73,28 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
-                                            @Override
-                                            public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-                                                startActivity(new Intent(getApplicationContext(), Dashboard.class));
-                                            }
-                                        });
+                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                                    final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(Login.this)
+                                                            .setTitle("Fingerpint")
+                                                            .setSubtitle("Subtitle")
+                                                            .setDescription("Description")
+                                                            .setNegativeButton("Cancel", executor, new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                                }
+                                                            }).build();
+                                                    biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
+                                                        @Override
+                                                        public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
+                                                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                                        }
+                                                    });
+                                                } else {
+                                                    alertLogin.setText("Android kamu tolol");
+                                                }
                                     } else {
-                                        Toast.makeText(Login.this, "Login Gagal.", Toast.LENGTH_SHORT).show();
+                                        alertLogin.setText("Could'nt Sign In, Please retype your Student Email and Password");
                                     }
                                 }
                             });

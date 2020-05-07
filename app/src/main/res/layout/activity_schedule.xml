@@ -85,13 +85,26 @@
             android:backgroundTint="@color/bg_dark"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/alertSchedule"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:text=" "
+                android:visibility="visible"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/Alert"/>
+
             <ImageView
                 android:id="@+id/imgSchedule"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,8 +128,11 @@
                     android:text="Save Schedule"
                     android:textAllCaps="false"
                     android:textColor="@color/bg_light"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    android:visibility="visible"/>
             </LinearLayout>
+
+
         </LinearLayout>
 
     </RelativeLayout>

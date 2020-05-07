@@ -46,8 +46,9 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
     private static final String KEY_NILAIUAS = "nilaiuas";
     private static final String KEY_NILAITUGAS = "nilaitugas";
     private static final String KEY_SKS = "sks";
-    double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0;
+    double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0, totalipk = 0;
     DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
+    String selectedItem;
 
     private GradeAdapter adapter;
 
@@ -97,16 +98,18 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
         spinnerGrade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String selectedItem = spinnerGrade.getItemAtPosition(position).toString();
+                selectedItem = spinnerGrade.getItemAtPosition(position).toString();
 
                 if (selectedItem.equals("1st Semester")) {
                     totaltotalips = 0;
-                   grade(selectedItem);
+                    grade(selectedItem);
+                    lvGrade.setAdapter(adapter);
 
 
                 } else if (selectedItem.equals("2nd Semester")) {
                     totaltotalips = 0;
-                   grade(selectedItem);
+                    grade(selectedItem);
+                    lvGrade.setAdapter(adapter);
                 }
             }
             @Override
@@ -114,32 +117,26 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
 
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+    }
+
+
+    @Override
+    public void onItemClick(DocumentSnapshot snapshot, int position) {
+        Intent pindah = new Intent(Grade.this, GradeDetail.class);
+        startActivity(pindah
+                .putExtra("gradeID", snapshot.getId())
+                .putExtra("semester", selectedItem));
 
     }
 
     private void grade(final String selectedItem) {
 
         final String semester = selectedItem;
-        Query query = fStore.collection("user").document(userID).collection("grade").document("semester").collection(selectedItem);
-        FirestoreRecyclerOptions<GradeModel> options = new FirestoreRecyclerOptions.Builder<GradeModel>()
-                .setQuery(query, new SnapshotParser<GradeModel>() {
-                    @NonNull
-                    @Override
-                    public GradeModel parseSnapshot(@NonNull DocumentSnapshot snapshot) {
-                        GradeModel gradeModel = snapshot.toObject(GradeModel.class);
-                        String gradeID = snapshot.getId();
-                        gradeModel.setGradeid(gradeID);
-                        return gradeModel;
-                    }
-                })
-                .build();
-        adapter = new GradeAdapter(options,this);
-
-        lvGrade.setHasFixedSize(true);
-        lvGrade.setLayoutManager(new LinearLayoutManager(this));
-        lvGrade.setAdapter(adapter);
-        adapter.startListening();
 
         fStore.collection("user").document(userID).collection("grade").document("semester").collection(semester)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -194,42 +191,36 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                                                     totalips = ips1 + totalips;
                                                     totalsks = sks + totalsks;
                                                     totaltotalips =  totalips / totalsks;
-
+                                                    totalipk = totaltotalips + totalipk;
                                                     ips.setText(REAL_FORMATTER.format(totaltotalips));
                                                 }
-
                                             }
-                                });
+                                        });
                             }
                         }
                         else ips.setText(REAL_FORMATTER.format(totaltotalips));
                     }
                 });
+
+        Query query = fStore.collection("user").document(userID).collection("grade").document("semester").collection(selectedItem);
+        FirestoreRecyclerOptions<GradeModel> options = new FirestoreRecyclerOptions.Builder<GradeModel>()
+                .setQuery(query, new SnapshotParser<GradeModel>() {
+                    @NonNull
+                    @Override
+                    public GradeModel parseSnapshot(@NonNull DocumentSnapshot snapshot) {
+                        GradeModel gradeModel = snapshot.toObject(GradeModel.class);
+                        String gradeID = snapshot.getId();
+                        gradeModel.setGradeid(gradeID);
+                        return gradeModel;
+                    }
+                })
+                .build();
+
+        adapter = new GradeAdapter(options,this);
+        lvGrade.setHasFixedSize(true);
+        lvGrade.setLayoutManager(new LinearLayoutManager(this));
+        adapter.startListening();
     }
-
-
-    @Override
-    public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
-    }
-
-
-
-    @Override
-    public void onItemClick(DocumentSnapshot snapshot, int position) {
-//        Intent pindah = new Intent(Grade.this,GradeDetail.class);
-//        startActivity(pindah.putExtra("courseID", snapshot.getId()));
-    }
-
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        adapter.stopListening();
-//    }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//    }
 }
+
+

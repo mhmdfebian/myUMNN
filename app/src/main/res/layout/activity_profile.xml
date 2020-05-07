@@ -134,7 +134,7 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/gilroy_medium"
             android:text="Fakultas Teknik dan Informatika"
-            android:textColor="@color/TeritaryLight"
+            android:textColor="@color/Teritary"
             android:textSize="16sp" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/gilroy_medium"
             android:text="Informatika"
-            android:textColor="@color/TeritaryLight"
+            android:textColor="@color/Teritary"
             android:textSize="16sp" />
 
         <TextView
@@ -176,8 +176,8 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/gilroy_medium"
             android:text="2017"
-            android:textColor="@color/TeritaryLight"
-            android:textSize="16sp" />
+            android:textColor="@color/Teritary"
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <GridLayout

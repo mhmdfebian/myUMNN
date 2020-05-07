@@ -23,13 +23,14 @@ public class EventAdapter extends FirestoreRecyclerAdapter<EventModel, EventAdap
     int position;
     String eventname, eventdesc, eventdate, eventlocation, eventtime;
 
-    public EventAdapter(@NonNull FirestoreRecyclerOptions<EventModel> options, Event onListItemClick) {
+    public EventAdapter(@NonNull FirestoreRecyclerOptions<EventModel> options, OnListItemClick onListItemClick) {
         super(options);
         this.onListItemClick = onListItemClick;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull EventViewHolder holder, int position, @NonNull EventModel model) {
+
         holder.tvName.setText(model.getEventname());
         holder.tvDesc.setText(model.getEventdesc());
         holder.tvDate.setText(model.getEventdate());

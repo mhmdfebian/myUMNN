@@ -41,8 +41,9 @@ public class Notification extends AppCompatActivity {
         });
         Intent pindah = getIntent();
         String title = pindah.getStringExtra("title");
+        String subject = pindah.getStringExtra("subject");
 
-        Atas.setText("Reminder");
+        Atas.setText(subject);
         Bawah.setText(title);
 
     }

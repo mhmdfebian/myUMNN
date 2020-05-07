@@ -59,7 +59,7 @@ public class Financial extends AppCompatActivity {
 
 
         userID = mAuth.getCurrentUser().getUid();
-        
+
         spinnerFinancial = findViewById(R.id.spinnerFinancial);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +89,7 @@ public class Financial extends AppCompatActivity {
                     semesterFinancial(selectedItem);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -103,11 +104,10 @@ public class Financial extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
+                if (documentSnapshot.exists()) {
                     DecimalFormat REAL_FORMATTER = new DecimalFormat("0.##");
                     int Biayatetap = documentSnapshot.getLong("biayatetap").intValue();
                     int Biayasks = documentSnapshot.getLong("biayasks").intValue();
-                    int Biayapeminatan = documentSnapshot.getLong("biayapeminatan").intValue();
                     int Sks = documentSnapshot.getLong("sks").intValue();
                     int Skspeminatan = documentSnapshot.getLong("skspeminatan").intValue();
                     int Jumlahsks;
@@ -126,18 +126,24 @@ public class Financial extends AppCompatActivity {
 
 
                     tvSemester.setText(documentSnapshot.getString("semester"));
-                    tvBiayatetap.setText(formatRupiah.format((double)Biayatetap));
-                    tvBiayasks.setText(formatRupiah.format((double)Biayasks));
-                    tvBiayapeminatan.setText(formatRupiah.format((double)Biayapeminatan));
-                    tvSks.setText(""+Sks);
-                    tvSkspeminatan.setText(""+Skspeminatan);
-                    tvJumlahsks.setText(formatRupiah.format((double)Jumlahsks));
-                    tvJumlahpeminatan.setText(formatRupiah.format((double)Jumlahpeminatan));
-                    tvTotal.setText(formatRupiah.format((double)Total));
-                    tvSudahbayar.setText(formatRupiah.format((double)Sudahbayar));
-                    tvBelumbayar.setText(formatRupiah.format((double)Belumbayar));
+                    tvBiayatetap.setText(formatRupiah.format((double) Biayatetap));
+                    tvBiayasks.setText(formatRupiah.format((double) Biayasks));
 
-                }else {
+                    if (Skspeminatan == 0) {
+                        tvBiayapeminatan.setText(formatRupiah.format((double) 0));
+                    } else {
+                        tvBiayapeminatan.setText(formatRupiah.format((double) Biayasks));
+                    }
+
+                    tvSks.setText("" + Sks);
+                    tvSkspeminatan.setText("" + Skspeminatan);
+                    tvJumlahsks.setText(formatRupiah.format((double) Jumlahsks));
+                    tvJumlahpeminatan.setText(formatRupiah.format((double) Jumlahpeminatan));
+                    tvTotal.setText(formatRupiah.format((double) Total));
+                    tvSudahbayar.setText(formatRupiah.format((double) Sudahbayar));
+                    tvBelumbayar.setText(formatRupiah.format((double) Belumbayar));
+
+                } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }

@@ -51,6 +51,7 @@ public class Dashboard extends AppCompatActivity {
     String userID, semester;
     Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
     private static final String KEY_TITLE = "title";
+    private static final String KEY_SUBJECT = "subject";
     private static final String KEY_TIME = "time";
 
     Date date;
@@ -174,7 +175,6 @@ public class Dashboard extends AppCompatActivity {
                                                                         Model y = x.toObject(Model.class);
                                                                         models.add(y);
                                                                         String time = x.getString(KEY_TIME);
-
                                                                         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
                                                                         try {
                                                                            date = df.parse(time);
@@ -185,15 +185,14 @@ public class Dashboard extends AppCompatActivity {
                                                                         calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
                                                                         calendar.set(Calendar.MINUTE,date.getMinutes());
                                                                         calendar.set(Calendar.SECOND, 0);
-
-
                                                                         if(date == null){
                                                                             Log.d("tag","gabiasgan");
                                                                         }else{
                                                                             Log.d("tag",  String.valueOf(Calendar.getInstance().getTimeInMillis()));
                                                                         }
                                                                         String title = x.getString(KEY_TITLE);
-                                                                        startAlarm(calendar, title);
+                                                                        String subject = x.getString(KEY_SUBJECT);
+                                                                        startAlarm(calendar, title, subject);
                                                                     }
                                                                 }
                                                                 adapter.notifyDataSetChanged();
@@ -214,13 +213,17 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
-    private void startAlarm(Calendar calendar, String title) {
+    private void startAlarm(Calendar calendar, String title,String subject) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-                intent.putExtra("title", title);
+                intent.putExtra("title", title)
+                      .putExtra("subject", subject);
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-
+        if (calendar.before(Calendar.getInstance())) {
+            calendar.add(Calendar.DATE, 1);
+        }
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 

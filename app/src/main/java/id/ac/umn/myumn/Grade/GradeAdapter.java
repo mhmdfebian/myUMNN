@@ -22,17 +22,16 @@ import id.ac.umn.myumn.R;
 public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdapter.GradeViewHolder>{
 
     private OnListItemClick onListItemClick;
-    int position;
 
 
-
-    public GradeAdapter(@NonNull FirestoreRecyclerOptions<GradeModel> options, Grade onListItemClick) {
+    public GradeAdapter(@NonNull FirestoreRecyclerOptions<GradeModel> options, OnListItemClick onListItemClick) {
         super(options);
-        this.onListItemClick = (OnListItemClick) onListItemClick;
+        this.onListItemClick = onListItemClick;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull GradeViewHolder holder, int position, @NonNull GradeModel model) {
+
         double total, number = 0;
 
         int nilaiuts;
@@ -45,7 +44,6 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
         nilaiuts = model.getNilaiuts();
         nilaiuas = model.getNilaiuas();
         nilaitugas = model.getNilaitugas();
-
 
 
         total = (nilaiuts * 0.3) + (nilaitugas * 0.3) + (nilaiuas * 0.4);
@@ -87,11 +85,9 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
             number = 4.00;
         }
 
-
         holder.tvSubject.setText(model.getSubject());
         holder.tvNumberGrade.setText(REAL_FORMATTER.format(number));
         holder.tvLetterGrade.setText(letter);
-
     }
 
     @NonNull
@@ -103,8 +99,7 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
 
     public class GradeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
-        private TextView tvSubject,tvNumberGrade,tvLetterGrade, ips;
+        private TextView tvSubject,tvNumberGrade,tvLetterGrade;
 
 
         public GradeViewHolder(@NonNull View itemView){
@@ -113,9 +108,8 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
             tvSubject = itemView.findViewById(R.id.subject);
             tvNumberGrade = itemView.findViewById(R.id.numberGrade);
             tvLetterGrade = itemView.findViewById(R.id.letterGrade);
-
+            itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {

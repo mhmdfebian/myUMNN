@@ -17,7 +17,7 @@ import id.ac.umn.myumn.R;
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "channelID";
-    public static final String channelName = "Channel Name";
+    public static final String channelName = "Notification myUMN";
     public static final String test = "test";
 
     private NotificationManager mManager;
@@ -43,16 +43,17 @@ public class NotificationHelper extends ContextWrapper {
         return mManager;
     }
 
-    public NotificationCompat.Builder getChannelNotification(String title) {
+    public NotificationCompat.Builder getChannelNotification(String title, String subject) {
         Intent intent = new Intent(this, Notification.class);
         intent.putExtra("id", channelID)
-                .putExtra("title",title);
+                .putExtra("title",title)
+                .putExtra("subject",subject);
 
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentTitle("Reminder")
-                .setContentText("Your " + title + "is due")
+                .setContentTitle(subject)
+                .setContentText("Your " + title + " is due")
                 .setSmallIcon(R.drawable.icon_myumn)
                 .setContentIntent(pIntent);
     }

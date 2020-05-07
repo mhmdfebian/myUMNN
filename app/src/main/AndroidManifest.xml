@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Login" />
         <activity android:name=".Dashboard.Dashboard" />
-        <activity android:name=".list_item_grade" />
+        <activity android:name=".Grade.GradeDetail" />
         <activity android:name=".Financial" />
         <activity android:name=".Grade.Grade" />
         <activity android:name=".Attendance.AttendanceDetail" />

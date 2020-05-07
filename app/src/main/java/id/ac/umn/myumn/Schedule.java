@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,10 +47,11 @@ import java.util.List;
 public class Schedule extends AppCompatActivity {
 
     Button btnMenu, btnNotif, btnSave;
+    TextView alertSchedule;
     Spinner spinnerSchedule;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, text;
+    String userID, text, filename;
     ImageView imgSchedule;
     private StorageReference mStorageRef;
     private static final String TEXT_KEY = "14.jpg";
@@ -70,6 +72,7 @@ public class Schedule extends AppCompatActivity {
         btnNotif = findViewById(R.id.btnNotif);
         imgSchedule = findViewById(R.id.imgSchedule);
         btnSave = findViewById(R.id.btnSave);
+        alertSchedule = findViewById(R.id.alertSchedule);
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -128,14 +131,17 @@ public class Schedule extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
-                    text = documentSnapshot.getString("filename");
-                    Log.d("tag", text);
-                    mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/schedule").child(text);
+                    text = documentSnapshot.getString("filename")+".jpg";
+                    filename = documentSnapshot.getString("filename");
+                    mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/schedule/"+userID).child(text);
                     try {
                         final File file = File.createTempFile("image", "jpeg");
                         mStorageRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                alertSchedule.setVisibility(View.GONE);
+                                imgSchedule.setVisibility(View.VISIBLE);
+                                btnSave.setVisibility(View.VISIBLE);
                                 final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
                                 imgSchedule.setImageBitmap(bitmap);
                                 btnSave.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +173,10 @@ public class Schedule extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception f) {
-                                Toast.makeText(Schedule.this, "Image gagal", Toast.LENGTH_SHORT).show();
+                                alertSchedule.setVisibility(View.VISIBLE);
+                                alertSchedule.setText("Your " + filename +" isn't available right now!");
+                                imgSchedule.setVisibility(View.GONE);
+                                btnSave.setVisibility(View.GONE);
                             }
                         });
                     } catch (IOException f) {
