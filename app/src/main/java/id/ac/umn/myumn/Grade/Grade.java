@@ -29,8 +29,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import id.ac.umn.myumn.Menu;
-import id.ac.umn.myumn.Notification;
+import id.ac.umn.myumn.Menu.Menu;
+import id.ac.umn.myumn.Notification.Notification;
 import id.ac.umn.myumn.R;
 
 public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemClick {

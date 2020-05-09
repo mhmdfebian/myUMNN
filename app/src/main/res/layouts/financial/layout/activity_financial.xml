@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical"
+    tools:context=".Financial.Financial">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClose"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/close"
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp">
+
+        <TextView
+            android:id="@+id/Financial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="6dp"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:text="Financial"
+            android:textColor="@color/Primary"
+            android:textSize="30sp" />
+
+        <Spinner
+            android:id="@+id/spinnerFinancial"
+            android:layout_width="130dp"
+            android:layout_height="18dp"
+            android:layout_below="@id/Financial"
+            android:padding="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/bg_dark"
+            android:entries="@array/semester"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@id/Financial"
+            android:src="@drawable/money"
+            android:tint="@color/Primary" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/card"
+        android:backgroundTint="@color/bg_light"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:text="1st Semester 2019/2020"
+            android:textColor="@color/Teritary"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/jenis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/semester"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="38dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Jenis Biaya"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/sks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/semester"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_toEndOf="@id/jenis"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="SKS"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/biaya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/semester"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="22dp"
+            android:layout_toEndOf="@id/sks"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Biaya/SKS"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jumlah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/semester"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/biaya"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Jumlah"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jenisTetap"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenis"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Biaya Tetap Semester"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/sksTetap"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenis"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@id/jenisTetap"
+            android:fontFamily="@font/gilroy_medium"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/biayaTetap"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenis"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@id/sksTetap"
+            android:fontFamily="@font/gilroy_medium"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jumlahTetap"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenis"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/biayaTetap"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 5.550.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/Secondary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jenisSKS"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenisTetap"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Biaya SKS Reguler"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/sksSKS"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sksTetap"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/jenisSKS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="18"
+            android:textAlignment="center"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/biayaSKS"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/biayaTetap"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/sksSKS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 450.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jumlahSKS"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jumlahTetap"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/biayaSKS"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 8.550.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/Secondary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jenisMinat"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenisSKS"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Biaya Perminatan"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/sksMinat"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sksSKS"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/jenisMinat"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/biayaMinat"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/biayaSKS"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/sksMinat"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 450.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/TeritaryLight"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jumlahMinat"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jumlahSKS"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/biayaMinat"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 1.350.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/Secondary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/Total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jenisMinat"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Total"
+            android:textAlignment="textStart"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/jumlahTotal"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jumlahMinat"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/biayaMinat"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 15.450.000"
+            android:textAlignment="textStart"
+            android:textColor="@color/Secondary"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/tvSudah"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Sudah Bayar"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/Sudah"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="175dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/tvSudah"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 10.950.000"
+            android:textColor="@color/Secondary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tvBelum"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/tvSudah"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Belum Bayar"
+            android:textColor="@color/Teritary"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/Belum"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="175dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/tvSudah"
+            android:layout_toEndOf="@id/tvBelum"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Rp 10.950.000"
+            android:textColor="@color/Alert"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

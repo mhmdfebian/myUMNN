@@ -7,31 +7,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
-import id.ac.umn.myumn.Course.Course;
-import id.ac.umn.myumn.Menu;
-import id.ac.umn.myumn.Notification;
+import id.ac.umn.myumn.Menu.Menu;
+import id.ac.umn.myumn.Notification.Notification;
 import id.ac.umn.myumn.R;
 
 public class Event extends AppCompatActivity implements EventAdapter.OnListItemClick {

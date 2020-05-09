@@ -12,6 +12,32 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts/attendance',
+                    'src/main/res/layouts/course',
+                    'src/main/res/layouts/enrollment',
+                    'src/main/res/layouts/event',
+                    'src/main/res/layouts/grade',
+                    'src/main/res/layouts/spinner',
+                    'src/main/res/layouts/dashboard',
+                    'src/main/res/layouts/financial',
+                    'src/main/res/layouts/login',
+                    'src/main/res/layouts/menu',
+                    'src/main/res/layouts/notification',
+                    'src/main/res/layouts/profile',
+                    'src/main/res/layouts/schedule',
+                    'src/main/res/layouts/skkm',
+                    'src/main/res/layouts/spinner',
+                    'src/main/res/layouts/splash',
+                    'src/main/res/layouts/',
+                    'src/main/res',
+            ]
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

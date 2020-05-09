@@ -11,7 +11,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import id.ac.umn.myumn.Notification;
+import id.ac.umn.myumn.Notification.Notification;
 import id.ac.umn.myumn.R;
 
 

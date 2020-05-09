@@ -16,26 +16,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login" />
+        <activity android:name=".Enrollment.EnrollmentDetail"></activity>
+        <activity android:name=".Enrollment.Enrollment" />
+        <activity android:name=".Login.Login" />
         <activity android:name=".Dashboard.Dashboard" />
         <activity android:name=".Grade.GradeDetail" />
-        <activity android:name=".Financial" />
+        <activity android:name=".Financial.Financial" />
         <activity android:name=".Grade.Grade" />
         <activity android:name=".Attendance.AttendanceDetail" />
         <activity android:name=".Attendance.Attendance" />
         <activity android:name=".Event.EventDetail" />
-        <activity android:name=".Skkm" />
+        <activity android:name=".Skkm.Skkm" />
         <activity android:name=".Event.Event" />
-        <activity android:name=".Schedule" />
+        <activity android:name=".Schedule.Schedule" />
         <activity android:name=".Course.CourseActivity" />
         <activity android:name=".Course.Course" />
-        <activity android:name=".Notification" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Splash"
+        <activity android:name=".Notification.Notification" />
+        <activity android:name=".Profile.Profile" />
+        <activity android:name=".Menu.Menu" />
+        <activity
+            android:name=".Splash.Splash"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

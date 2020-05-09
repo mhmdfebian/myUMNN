@@ -33,12 +33,13 @@ import java.util.List;
 
 import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
+import id.ac.umn.myumn.Enrollment.Enrollment;
 import id.ac.umn.myumn.Event.Event;
 import id.ac.umn.myumn.Grade.Grade;
-import id.ac.umn.myumn.Menu;
-import id.ac.umn.myumn.Notification;
+import id.ac.umn.myumn.Menu.Menu;
+import id.ac.umn.myumn.Notification.Notification;
 import id.ac.umn.myumn.R;
-import id.ac.umn.myumn.Schedule;
+import id.ac.umn.myumn.Schedule.Schedule;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class Dashboard extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID, semester;
-    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance;
+    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance, btnEnrollment;
     private static final String KEY_TITLE = "title";
     private static final String KEY_SUBJECT = "subject";
     private static final String KEY_TIME = "time";
@@ -74,6 +75,7 @@ public class Dashboard extends AppCompatActivity {
         btnEvent = findViewById(R.id.btnEvent);
         btnGrade = findViewById(R.id.btnGrade);
         btnAttendance = findViewById(R.id.btnAttendance);
+        btnEnrollment = findViewById(R.id.btnEnrollment);
 
         Name = findViewById(R.id.Name);
 
@@ -145,6 +147,14 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Dashboard.this, Attendance.class);
+                startActivity(i);
+            }
+        });
+
+        btnEnrollment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, Enrollment.class);
                 startActivity(i);
             }
         });

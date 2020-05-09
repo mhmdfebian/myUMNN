@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical"
+    tools:context=".Notification.Notification">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClose"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/close"
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/gilroy_extrabold"
+            android:text="Subject"
+            android:textColor="@color/Primary"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="2.5dp"
+            android:layout_toEndOf="@+id/subject"
+            android:background="@drawable/plus"
+            android:backgroundTint="@color/Secondary"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="end" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@id/listCourse"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/card"
+            android:tint="@color/TeritaryLight" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp">
+
+        <ImageView
+            android:id="@+id/iconDay"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/calendar2"
+            android:tint="@color/Secondary" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/iconDay"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:text="Monday"
+            android:textColor="@color/Secondary"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/iconTime"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/iconDay"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/time"
+            android:tint="@color/Secondary" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iconDay"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/iconTime"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:text="15:00"
+            android:textColor="@color/Secondary"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/strip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iconDay"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/time"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:text="-"
+            android:textColor="@color/Secondary"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/timeend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iconDay"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/strip"
+            android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:text="15:00"
+            android:textColor="@color/Secondary"
+            android:textSize="12sp" />
+    </RelativeLayout>
+</LinearLayout>

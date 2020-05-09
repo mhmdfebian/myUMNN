@@ -20,8 +20,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import id.ac.umn.myumn.Menu;
-import id.ac.umn.myumn.Notification;
+import id.ac.umn.myumn.Menu.Menu;
+import id.ac.umn.myumn.Notification.Notification;
 import id.ac.umn.myumn.R;
 
 public class Attendance extends AppCompatActivity implements AttendanceAdapter.OnListItemClick {
