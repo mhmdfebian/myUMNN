@@ -29,7 +29,7 @@
         <activity android:name=".Skkm.Skkm" />
         <activity android:name=".Event.Event" />
         <activity android:name=".Schedule.Schedule" />
-        <activity android:name=".Course.CourseActivity" />
+        <activity android:name=".Course.CourseDetail" />
         <activity android:name=".Course.Course" />
         <activity android:name=".Notification.Notification" />
         <activity android:name=".Profile.Profile" />

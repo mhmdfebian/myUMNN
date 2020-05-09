@@ -32,7 +32,7 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
     @NonNull
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_couse, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent,false);
         return new CourseViewHolder(view);
     }
 

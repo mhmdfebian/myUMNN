@@ -132,7 +132,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
-        Intent pindah = new Intent(Course.this, CourseActivity.class);
+        Intent pindah = new Intent(Course.this, CourseDetail.class);
         startActivity(pindah
                 .putExtra("semester", selectedItem)
                 .putExtra("courseID", snapshot.getId()));

@@ -31,7 +31,7 @@ import java.util.List;
 import id.ac.umn.myumn.Course.CourseModel;
 import id.ac.umn.myumn.R;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseDetail extends AppCompatActivity {
 
     Button btnClose;
     RecyclerView lvCourse;
