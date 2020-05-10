@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import id.ac.umn.myumn.Attendance.Attendance;
 import id.ac.umn.myumn.Course.Course;
 import id.ac.umn.myumn.Dashboard.Dashboard;
+import id.ac.umn.myumn.Enrollment.Enrollment;
 import id.ac.umn.myumn.Event.Event;
 import id.ac.umn.myumn.Grade.Grade;
 import id.ac.umn.myumn.Login.Login;
@@ -21,7 +22,7 @@ import id.ac.umn.myumn.Schedule.Schedule;
 
 public class Menu extends AppCompatActivity {
 
-    Button btnClose, btnSchedule, btnDashboard, btnProfile, btnCourse, btnEvent, btnGrade, btnAttendance, btnLogout;
+    Button btnClose, btnSchedule, btnDashboard, btnProfile, btnCourse, btnEvent, btnGrade, btnAttendance, btnEnrollment, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class Menu extends AppCompatActivity {
         btnEvent = findViewById(R.id.btnEvent);
         btnGrade = findViewById(R.id.btnGrade);
         btnAttendance = findViewById(R.id.btnAttendance);
+        btnEnrollment = findViewById(R.id.btnEnrollment);
         btnLogout = findViewById(R.id.btnLogout);
 
         btnDashboard.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +46,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Dashboard.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Dashboard) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -55,7 +57,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Profile.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Profile) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);;
             }
         });
@@ -66,7 +68,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Schedule.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Schedule) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -77,7 +79,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Course.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Course) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -88,7 +90,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Event.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Event) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -99,7 +101,7 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Grade.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Grade) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -110,7 +112,18 @@ public class Menu extends AppCompatActivity {
                 Intent i = new Intent(Menu.this, Attendance.class);
                 startActivity(i);
                 finish();
-                //Transisi (masuk menu) dari kanan ke kiri
+                //Transisi (masuk Attendance) dari kanan ke kiri
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        btnEnrollment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Menu.this, Enrollment.class);
+                startActivity(i);
+                finish();
+                //Transisi (masuk Enrollment) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -122,7 +135,7 @@ public class Menu extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
-                //Transisi (keluar) dari kanan ke kiri
+                //Transisi (close menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -144,7 +157,7 @@ public class Menu extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
-        //Transisi (keluar) dari kanan ke kiri
+        //Transisi (close menu) dari kanan ke kiri
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

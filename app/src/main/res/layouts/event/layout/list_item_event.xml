@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/nameEvent"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -31,20 +31,6 @@
                 android:textColor="@color/Teritary"
                 android:textSize="22sp" />
 
-            <Button
-                android:id="@+id/btnAdd"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="2.5dp"
-                android:layout_toEndOf="@id/nameEvent"
-                android:background="@drawable/plus"
-                android:backgroundTint="@color/TeritaryLight"
-                android:fontFamily="@font/gilroy_medium"
-                android:gravity="end" />
 
             <TextView
                 android:id="@+id/desc"
