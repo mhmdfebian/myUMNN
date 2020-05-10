@@ -35,7 +35,7 @@ import id.ac.umn.myumn.R;
 
 public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemClick {
 
-    TextView ips;
+    TextView ips,ipk;
     Button btnMenu, btnNotif;
     Spinner spinnerGrade;
     RecyclerView lvGrade;
@@ -46,7 +46,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
     private static final String KEY_NILAIUAS = "nilaiuas";
     private static final String KEY_NILAITUGAS = "nilaitugas";
     private static final String KEY_SKS = "sks";
-    double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0, totalipk = 0;
+    double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0, totalipk = 0 , totaltotalsks = 0;
     DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
     String selectedItem;
 
@@ -65,6 +65,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
         lvGrade = findViewById(R.id.listviewGrade);
 
         ips = findViewById(R.id.ips);
+
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -162,28 +163,28 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                                                         number = 4.00;
                                                     }
                                                     else if (total >= 80.00){
-                                                        number = 4.00;
+                                                        number = 3.70;
                                                     }
                                                     else if (total >= 75.00){
-                                                        number = 4.00;
+                                                        number = 3.30;
                                                     }
                                                     else if (total >= 70.00){
-                                                        number = 4.00;
+                                                        number = 3.00;
                                                     }
                                                     else if (total >= 65.00){
-                                                        number = 4.00;
+                                                        number = 2.70;
                                                     }
                                                     else if (total >= 60.00){
-                                                        number = 4.00;
+                                                        number = 2.30;
                                                     }
                                                     else if (total >= 55.00){
-                                                        number = 4.00;
+                                                        number = 2.00;
                                                     }
                                                     else if (total >= 45.00){
-                                                        number = 4.00;
+                                                        number = 1.00;
                                                     }
                                                     else if (total >= 0){
-                                                        number = 4.00;
+                                                        number = 0.00;
                                                     }
 
                                                     ips1 = number * sks;
@@ -191,13 +192,16 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                                                     totalips = ips1 + totalips;
                                                     totalsks = sks + totalsks;
                                                     totaltotalips =  totalips / totalsks;
-                                                    totalipk = totaltotalips + totalipk;
-                                                    ips.setText(REAL_FORMATTER.format(totaltotalips));
+                                                    ips.setText( REAL_FORMATTER.format(totaltotalips));
                                                 }
                                             }
                                         });
+                                    totalips = 0;
+                                    ips1 = 0;
+                                    totalsks = 0;
+                                    totaltotalips = 0;
                             }
-                        }
+                    }
                         else ips.setText(REAL_FORMATTER.format(totaltotalips));
                     }
                 });

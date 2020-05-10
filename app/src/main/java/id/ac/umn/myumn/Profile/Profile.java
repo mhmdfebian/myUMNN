@@ -59,7 +59,6 @@ public class Profile extends AppCompatActivity {
                 startActivity(i);
                 //Transisi (buka sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finishAffinity();
             }
         });
 

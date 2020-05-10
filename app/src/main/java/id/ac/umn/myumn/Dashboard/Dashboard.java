@@ -88,7 +88,7 @@ public class Dashboard extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(0, 0, 120, 0);
 
-        userID = mAuth.getCurrentUser().getUid();
+
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,68 +158,72 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-        DocumentReference documentReference = fStore.collection("user").document(userID);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if (documentSnapshot.exists()) {
-                    Name.setText("Hello, " + documentSnapshot.getString("nickname"));
-                    semester = documentSnapshot.getString("semester");
-                    fStore.collection("user").document(userID).collection("course").document("semester").collection(semester)
-                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                @Override
-                                public void onEvent(@javax.annotation.Nullable QuerySnapshot queryDocumentSnapshots, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                                    if (!queryDocumentSnapshots.isEmpty()) {
-                                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                                        for (DocumentSnapshot d : list) {
-                                            fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId()).collection("topics")
-                                                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                                        @Override
-                                                        public void onEvent(@javax.annotation.Nullable QuerySnapshot querySnap, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                                                            if (!querySnap.isEmpty()) {
-                                                                List<DocumentSnapshot> list = querySnap.getDocuments();
-                                                                for (DocumentSnapshot x : list) {
-                                                                    if (!x.getString(KEY_TITLE).equals("Materi")) {
-                                                                        Model y = x.toObject(Model.class);
-                                                                        models.add(y);
-                                                                        String time = x.getString(KEY_TIME);
-                                                                        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-                                                                        try {
-                                                                           date = df.parse(time);
-                                                                        } catch (ParseException ex) {
-                                                                            ex.printStackTrace();
+        if (mAuth.getCurrentUser() != null ) {
+            userID = mAuth.getCurrentUser().getUid();
+            DocumentReference documentReference = fStore.collection("user").document(userID);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    if (documentSnapshot.exists()) {
+                        Name.setText("Hello, " + documentSnapshot.getString("nickname"));
+                        semester = documentSnapshot.getString("semester");
+                        fStore.collection("user").document(userID).collection("course").document("semester").collection(semester)
+                                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                                        if (e == null){
+                                            if (!queryDocumentSnapshots.isEmpty()) {
+                                                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                                                for (DocumentSnapshot d : list) {
+                                                    fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId()).collection("topics")
+                                                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                                                @Override
+                                                                public void onEvent(@Nullable QuerySnapshot querySnap, @Nullable FirebaseFirestoreException e) {
+                                                                    if (e == null) {
+                                                                        if (!querySnap.isEmpty()) {
+                                                                            List<DocumentSnapshot> list = querySnap.getDocuments();
+                                                                            for (DocumentSnapshot x : list) {
+                                                                                if (!x.getString(KEY_TITLE).equals("Materi")) {
+                                                                                    Model y = x.toObject(Model.class);
+                                                                                    models.add(y);
+                                                                                    String time = x.getString(KEY_TIME);
+                                                                                    SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+                                                                                    try {
+                                                                                        date = df.parse(time);
+                                                                                    } catch (ParseException ex) {
+                                                                                        ex.printStackTrace();
+                                                                                    }
+                                                                                    Calendar calendar = Calendar.getInstance();
+                                                                                    calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
+                                                                                    calendar.set(Calendar.MINUTE, date.getMinutes());
+                                                                                    calendar.set(Calendar.SECOND, 0);
+                                                                                    if (date == null) {
+                                                                                        Log.d("tag", "gabiasgan");
+                                                                                    } else {
+                                                                                        Log.d("tag", String.valueOf(Calendar.getInstance().getTimeInMillis()));
+                                                                                    }
+                                                                                    String title = x.getString(KEY_TITLE);
+                                                                                    String subject = x.getString(KEY_SUBJECT);
+                                                                                    startAlarm(calendar, title, subject);
+                                                                                }
+                                                                            }
+                                                                            adapter.notifyDataSetChanged();
                                                                         }
-                                                                        Calendar calendar = Calendar.getInstance();
-                                                                        calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
-                                                                        calendar.set(Calendar.MINUTE,date.getMinutes());
-                                                                        calendar.set(Calendar.SECOND, 0);
-                                                                        if(date == null){
-                                                                            Log.d("tag","gabiasgan");
-                                                                        }else{
-                                                                            Log.d("tag",  String.valueOf(Calendar.getInstance().getTimeInMillis()));
-                                                                        }
-                                                                        String title = x.getString(KEY_TITLE);
-                                                                        String subject = x.getString(KEY_SUBJECT);
-                                                                        startAlarm(calendar, title, subject);
                                                                     }
                                                                 }
-                                                                adapter.notifyDataSetChanged();
-                                                            }
-                                                        }
-                                                    });
-                                        }
+                                                            });
+                                                }
+                                            }
                                     }
                                 }
-                            });
+                                });
 
-                } else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                    } else {
+                        Log.d("tag", "onEvent: Document do not exists");
+                    }
                 }
-            }
-        });
-
+            });
+        }
 
     }
 

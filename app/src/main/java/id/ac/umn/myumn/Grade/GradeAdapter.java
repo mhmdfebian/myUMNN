@@ -54,35 +54,35 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
         }
         else if (total >= 80.00){
             letter = "A-";
-            number = 4.00;
+            number = 3.70;
         }
         else if (total >= 75.00){
             letter = "B+";
-            number = 4.00;
+            number = 3.30;
         }
         else if (total >= 70.00){
             letter = "B";
-            number = 4.00;
+            number = 3.00;
         }
         else if (total >= 65.00){
             letter = "B-";
-            number = 4.00;
+            number = 2.70;
         }
         else if (total >= 60.00){
             letter = "C+";
-            number = 4.00;
+            number = 2.30;
         }
         else if (total >= 55.00){
             letter = "C";
-            number = 4.00;
+            number = 2.00;
         }
         else if (total >= 45.00){
             letter = "D";
-            number = 4.00;
+            number = 1.00;
         }
         else if (total >= 0){
             letter = "E";
-            number = 4.00;
+            number = 0.00;
         }
 
         holder.tvSubject.setText(model.getSubject());
