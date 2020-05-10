@@ -60,11 +60,11 @@ public class Login extends AppCompatActivity {
                 String password = etPass.getText().toString();
 
                 if (uname.equals("") && password.equals("")) {
-                    alertLogin.setText("Please retype your Student Email and Password");
+                    alertLogin.setText("Could'nt Sign In, Please retype your Student Email and Password");
                 } else if (password.equals("")) {
-                    alertLogin.setText("Please retype your Password");
+                    alertLogin.setText("Could'nt Sign In, Please retype your Password");
                 } else  if (uname.equals("")) {
-                    alertLogin.setText("Please retype your Student Email");
+                    alertLogin.setText("Could'nt Sign In, Please retype your Student Email");
                 }else {
 
                     mAuth.signInWithEmailAndPassword(uname, password)
@@ -74,9 +74,9 @@ public class Login extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                                                     final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(Login.this)
-                                                            .setTitle("Fingerpint")
-                                                            .setSubtitle("Subtitle")
-                                                            .setDescription("Description")
+                                                            .setTitle("Hello Ultimafriend,")
+                                                            .setSubtitle("Please authenticate your account")
+                                                            .setDescription("using fingerprint to sign in to myumn account")
                                                             .setNegativeButton("Cancel", executor, new DialogInterface.OnClickListener() {
                                                                 @Override
                                                                 public void onClick(DialogInterface dialog, int which) {
