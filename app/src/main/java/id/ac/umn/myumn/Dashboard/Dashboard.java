@@ -155,6 +155,7 @@ public class Dashboard extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) {
             userID = mAuth.getCurrentUser().getUid();
+            //Mengambil isi profile di database
             DocumentReference documentReference = fStore.collection("user").document(userID);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
                 @Override
@@ -162,6 +163,7 @@ public class Dashboard extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                         Name.setText("Hello, " + documentSnapshot.getString("nickname"));
                         semester = documentSnapshot.getString("semester");
+                        //Mengambil document course atau matkul
                         fStore.collection("user").document(userID).collection("course").document("semester").collection(semester)
                                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                     @Override
@@ -176,6 +178,7 @@ public class Dashboard extends AppCompatActivity {
                                                                 public void onEvent(@Nullable QuerySnapshot querySnap, @Nullable FirebaseFirestoreException e) {
                                                                     if (e == null) {
                                                                         if (!querySnap.isEmpty()) {
+                                                                            //Mengambil isi topics
                                                                             List<DocumentSnapshot> list = querySnap.getDocuments();
                                                                             for (DocumentSnapshot x : list) {
                                                                                 if (!x.getString(KEY_TITLE).equals("Materi")) {
@@ -188,15 +191,12 @@ public class Dashboard extends AppCompatActivity {
                                                                                     } catch (ParseException ex) {
                                                                                         ex.printStackTrace();
                                                                                     }
+                                                                                    //Mengambil waktu di database untuk notif
                                                                                     Calendar calendar = Calendar.getInstance();
                                                                                     calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
                                                                                     calendar.set(Calendar.MINUTE, date.getMinutes());
                                                                                     calendar.set(Calendar.SECOND, 0);
-                                                                                    if (date == null) {
-                                                                                        Log.d("tag", "gabiasgan");
-                                                                                    } else {
-                                                                                        Log.d("tag", String.valueOf(Calendar.getInstance().getTimeInMillis()));
-                                                                                    }
+                                                                                 
                                                                                     String title = x.getString(KEY_TITLE);
                                                                                     String subject = x.getString(KEY_SUBJECT);
                                                                                     startAlarm(calendar, title, subject);
