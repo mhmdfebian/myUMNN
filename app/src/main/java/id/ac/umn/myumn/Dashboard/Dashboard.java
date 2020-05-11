@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -43,21 +41,20 @@ import id.ac.umn.myumn.Schedule.Schedule;
 
 public class Dashboard extends AppCompatActivity {
 
-    TextView Name;
-    ViewPager viewPager;
-    Adapter adapter;
-    List<Model> models;
+    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance, btnEnrollment;
+    DashboardAdapter adapter;
+    Date date;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
+    List<DashboardModel> models;
     String userID, semester;
-    Button btnMenu, btnNotif, btnSchedule, btnCourse, btnEvent, btnGrade, btnAttendance, btnEnrollment;
+    TextView Name;
+    ViewPager viewPager;
+
     private static final String KEY_TITLE = "title";
     private static final String KEY_SUBJECT = "subject";
     private static final String KEY_TIME = "time";
 
-    Date date;
-
-    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,13 +78,11 @@ public class Dashboard extends AppCompatActivity {
 
         models = new ArrayList<>();
 
-
-        adapter = new Adapter(models, this);
+        adapter = new DashboardAdapter(models, this);
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(0, 0, 120, 0);
-
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +152,7 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         if (mAuth.getCurrentUser() != null) {
             userID = mAuth.getCurrentUser().getUid();
             DocumentReference documentReference = fStore.collection("user").document(userID);
@@ -183,7 +179,7 @@ public class Dashboard extends AppCompatActivity {
                                                                             List<DocumentSnapshot> list = querySnap.getDocuments();
                                                                             for (DocumentSnapshot x : list) {
                                                                                 if (!x.getString(KEY_TITLE).equals("Materi")) {
-                                                                                    Model y = x.toObject(Model.class);
+                                                                                    DashboardModel y = x.toObject(DashboardModel.class);
                                                                                     models.add(y);
                                                                                     String time = x.getString(KEY_TIME);
                                                                                     SimpleDateFormat df = new SimpleDateFormat("HH:mm");
@@ -223,7 +219,6 @@ public class Dashboard extends AppCompatActivity {
                 }
             });
         }
-
     }
 
     private void startAlarm(Calendar calendar, String title, String subject) {

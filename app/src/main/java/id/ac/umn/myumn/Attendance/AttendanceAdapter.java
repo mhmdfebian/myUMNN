@@ -14,10 +14,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import id.ac.umn.myumn.R;
 
-public class AttendanceAdapter extends FirestoreRecyclerAdapter<AttendanceModel, AttendanceAdapter.AttendanceViewHolder>{
+public class AttendanceAdapter extends FirestoreRecyclerAdapter<AttendanceModel, AttendanceAdapter.AttendanceViewHolder> {
 
     private OnListItemClick onListItemClick;
-    int position;
 
     public AttendanceAdapter(@NonNull FirestoreRecyclerOptions<AttendanceModel> options, OnListItemClick onListItemClick) {
         super(options);
@@ -32,18 +31,16 @@ public class AttendanceAdapter extends FirestoreRecyclerAdapter<AttendanceModel,
     @NonNull
     @Override
     public AttendanceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_attendance, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_attendance, parent, false);
         return new AttendanceViewHolder(view);
     }
-
 
 
     public class AttendanceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView lAttendance;
 
-
-        public AttendanceViewHolder(@NonNull View itemView){
+        public AttendanceViewHolder(@NonNull View itemView) {
             super(itemView);
 
             lAttendance = itemView.findViewById(R.id.listAttendance);

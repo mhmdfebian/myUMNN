@@ -17,7 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import id.ac.umn.myumn.R;
 
 
-public class EnrollmentAdapter extends FirestoreRecyclerAdapter<EnrollmentModel, EnrollmentAdapter.EnrollmentViewHolder>{
+public class EnrollmentAdapter extends FirestoreRecyclerAdapter<EnrollmentModel, EnrollmentAdapter.EnrollmentViewHolder> {
 
     private OnListItemClick onListItemClick;
     int position;
@@ -35,21 +35,20 @@ public class EnrollmentAdapter extends FirestoreRecyclerAdapter<EnrollmentModel,
         holder.tvDay.setText(model.getDay());
         holder.tvTime.setText(model.getTime());
         holder.tvTimeEnd.setText(model.getTimeend());
-
     }
 
     @NonNull
     @Override
     public EnrollmentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_enrollment, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_enrollment, parent, false);
         return new EnrollmentViewHolder(view);
     }
 
     public class EnrollmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView tvSubject,tvDay,tvTime, tvTimeEnd;
+        private TextView tvSubject, tvDay, tvTime, tvTimeEnd;
 
-        public EnrollmentViewHolder(@NonNull View itemView){
+        public EnrollmentViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvSubject = itemView.findViewById(R.id.nameSubject);

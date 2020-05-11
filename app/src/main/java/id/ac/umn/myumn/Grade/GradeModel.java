@@ -8,7 +8,7 @@ public class GradeModel {
     private String subject;
     private String gradeid;
 
-    private GradeModel(int nilaiuts, int nilaiuas, int nilaitugas, String gradeid, String subject){
+    private GradeModel(int nilaiuts, int nilaiuas, int nilaitugas, String gradeid, String subject) {
         this.nilaiuts = nilaiuts;
         this.nilaiuas = nilaiuas;
         this.nilaitugas = nilaitugas;
@@ -16,7 +16,7 @@ public class GradeModel {
         this.subject = subject;
     }
 
-    private GradeModel(){
+    private GradeModel() {
 
     }
 
@@ -59,5 +59,4 @@ public class GradeModel {
     public void setGradeid(String gradeid) {
         this.gradeid = gradeid;
     }
-
 }

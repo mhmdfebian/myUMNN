@@ -117,6 +117,7 @@
             android:text="15:00"
             android:textColor="@color/Secondary"
             android:textSize="12sp" />
+
         <TextView
             android:id="@+id/strip"
             android:layout_width="wrap_content"
@@ -132,6 +133,7 @@
             android:text="-"
             android:textColor="@color/Secondary"
             android:textSize="12sp" />
+
         <TextView
             android:id="@+id/timeend"
             android:layout_width="wrap_content"

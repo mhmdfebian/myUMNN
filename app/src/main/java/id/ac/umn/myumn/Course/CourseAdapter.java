@@ -14,10 +14,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import id.ac.umn.myumn.R;
 
-public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseAdapter.CourseViewHolder>{
+public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseAdapter.CourseViewHolder> {
 
     private OnListItemClick onListItemClick;
-    int position;
+
 
     public CourseAdapter(@NonNull FirestoreRecyclerOptions<CourseModel> options, OnListItemClick onListItemClick) {
         super(options);
@@ -32,7 +32,7 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
     @NonNull
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent, false);
         return new CourseViewHolder(view);
     }
 
@@ -40,8 +40,7 @@ public class CourseAdapter extends FirestoreRecyclerAdapter<CourseModel, CourseA
 
         private TextView lCourse;
 
-
-        public CourseViewHolder(@NonNull View itemView){
+        public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
 
             lCourse = itemView.findViewById(R.id.listCourse);

@@ -48,17 +48,15 @@ import id.ac.umn.myumn.R;
 public class Schedule extends AppCompatActivity {
 
     Button btnMenu, btnNotif, btnSave;
-    TextView alertSchedule;
-    Spinner spinnerSchedule;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, text, filename;
     ImageView imgSchedule;
-    private StorageReference mStorageRef;
-    private static final String TEXT_KEY = "14.jpg";
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
     OutputStream outputStream;
+    Spinner spinnerSchedule;
+    String userID, text, filename;
+    TextView alertSchedule;
+
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +66,12 @@ public class Schedule extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
-        imgSchedule = findViewById(R.id.imgSchedule);
         btnSave = findViewById(R.id.btnSave);
+
+        imgSchedule = findViewById(R.id.imgSchedule);
+
         alertSchedule = findViewById(R.id.alertSchedule);
 
         userID = mAuth.getCurrentUser().getUid();
@@ -122,8 +121,6 @@ public class Schedule extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void schedule(String selectedItem) {
@@ -132,9 +129,9 @@ public class Schedule extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
-                    text = documentSnapshot.getString("filename")+".jpg";
+                    text = documentSnapshot.getString("filename") + ".jpg";
                     filename = documentSnapshot.getString("filename");
-                    mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/schedule/"+userID).child(text);
+                    mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://myumn-7ff78.appspot.com/schedule/" + userID).child(text);
                     try {
                         final File file = File.createTempFile("image", "jpeg");
                         mStorageRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -154,7 +151,7 @@ public class Schedule extends AppCompatActivity {
                                             if (!directory.exists()) {
                                                 directory.mkdirs();
                                             }
-                                            String namafile = text+".jpg";
+                                            String namafile = text + ".jpg";
                                             String namaaa = NamaFolder + namafile;
                                             try {
                                                 outputStream = new FileOutputStream(namaaa, true);
@@ -175,7 +172,7 @@ public class Schedule extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception f) {
                                 alertSchedule.setVisibility(View.VISIBLE);
-                                alertSchedule.setText("Your " + filename +" isn't available right now!");
+                                alertSchedule.setText("Your " + filename + " isn't available right now!");
                                 imgSchedule.setVisibility(View.GONE);
                                 btnSave.setVisibility(View.GONE);
                             }
@@ -189,8 +186,6 @@ public class Schedule extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     @Override

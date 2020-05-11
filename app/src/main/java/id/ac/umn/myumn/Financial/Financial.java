@@ -27,17 +27,19 @@ import java.util.Locale;
 import id.ac.umn.myumn.R;
 
 public class Financial extends AppCompatActivity {
+
     Button btnClose;
-    Spinner spinnerFinancial;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID,first;
+    Spinner spinnerFinancial;
+    String userID, first;
     TextView tvSemester, tvBiayatetap, tvSks, tvSkspeminatan, tvBiayasks, tvJumlahsks, tvJumlahpeminatan, tvTotal, tvSudahbayar, tvBelumbayar, tvBiayapeminatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_financial);
+
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -54,7 +56,6 @@ public class Financial extends AppCompatActivity {
         tvTotal = findViewById(R.id.jumlahTotal);
         tvBelumbayar = findViewById(R.id.Belum);
         tvSudahbayar = findViewById(R.id.Sudah);
-
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -104,8 +105,6 @@ public class Financial extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void semesterFinancial(String selectedItem) {
@@ -133,7 +132,6 @@ public class Financial extends AppCompatActivity {
                     Locale localeID = new Locale("in", "ID");
                     NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
-
                     tvSemester.setText(documentSnapshot.getString("semester"));
                     tvBiayatetap.setText(formatRupiah.format((double) Biayatetap));
                     tvBiayasks.setText(formatRupiah.format((double) Biayasks));
@@ -151,7 +149,6 @@ public class Financial extends AppCompatActivity {
                     tvTotal.setText(formatRupiah.format((double) Total));
                     tvSudahbayar.setText(formatRupiah.format((double) Sudahbayar));
                     tvBelumbayar.setText(formatRupiah.format((double) Belumbayar));
-
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }

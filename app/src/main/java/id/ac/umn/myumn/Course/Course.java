@@ -32,14 +32,13 @@ import id.ac.umn.myumn.R;
 public class Course extends AppCompatActivity implements CourseAdapter.OnListItemClick {
 
     Button btnMenu, btnNotif;
-    Spinner spinnerCourse;
-    RecyclerView lvCourse;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID;
     Query query;
+    RecyclerView lvCourse;
+    Spinner spinnerCourse;
+    String userID, selectedItem, first;
     TextView course;
-    String selectedItem,first;
 
     private CourseAdapter adapter;
 
@@ -53,7 +52,9 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
+
         lvCourse = findViewById(R.id.listviewCourse);
+
         course = findViewById(R.id.Course);
 
         userID = mAuth.getCurrentUser().getUid();
@@ -94,12 +95,12 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
                     spinnerCourse.setSelection(myAdapter.getPosition(first));
                 }
             }
-            });
+        });
 
         spinnerCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-               selectedItem = spinnerCourse.getItemAtPosition(position).toString();
+                selectedItem = spinnerCourse.getItemAtPosition(position).toString();
 
                 if (selectedItem.equals("1st Semester")) {
                     semesterCourse(selectedItem);
@@ -123,9 +124,8 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
     }
 
     public void semesterCourse(String selectedItem) {
-
         query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
-        FirestoreRecyclerOptions<CourseModel>options = new FirestoreRecyclerOptions.Builder<CourseModel>()
+        FirestoreRecyclerOptions<CourseModel> options = new FirestoreRecyclerOptions.Builder<CourseModel>()
                 .setQuery(query, new SnapshotParser<CourseModel>() {
                     @NonNull
                     @Override
@@ -137,13 +137,12 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
                     }
                 })
                 .build();
-        adapter = new CourseAdapter(options,this);
+        adapter = new CourseAdapter(options, this);
         lvCourse.setHasFixedSize(true);
         lvCourse.setLayoutManager(new LinearLayoutManager(this));
         lvCourse.setAdapter(adapter);
         adapter.startListening();
     }
-
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
@@ -152,5 +151,4 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
                 .putExtra("semester", selectedItem)
                 .putExtra("courseID", snapshot.getId()));
     }
-
 }

@@ -1,7 +1,6 @@
 package id.ac.umn.myumn.Attendance;
 
-public class AttendanceModel{
-
+public class AttendanceModel {
 
 
     private String subject;
@@ -11,8 +10,7 @@ public class AttendanceModel{
     private String date;
 
 
-
-    private AttendanceModel(String subject, String week, String present, String date, String attendanceid){
+    private AttendanceModel(String subject, String week, String present, String date, String attendanceid) {
         this.subject = subject;
         this.attendanceid = attendanceid;
         this.week = week;
@@ -20,9 +18,10 @@ public class AttendanceModel{
         this.date = date;
     }
 
-    private AttendanceModel(){
+    private AttendanceModel() {
 
     }
+
     public String getSubject() {
         return subject;
     }

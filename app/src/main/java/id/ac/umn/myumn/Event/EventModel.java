@@ -2,7 +2,6 @@ package id.ac.umn.myumn.Event;
 
 public class EventModel {
 
-
     private String eventdate;
     private String eventdesc;
     private String eventlocation;
@@ -10,7 +9,7 @@ public class EventModel {
     private String eventtime;
     private String eventid;
 
-    private EventModel(String eventdate, String eventdesc, String eventlocation, String eventname, String eventtime, String eventid){
+    private EventModel(String eventdate, String eventdesc, String eventlocation, String eventname, String eventtime, String eventid) {
         this.eventdate = eventdate;
         this.eventdesc = eventdesc;
         this.eventlocation = eventlocation;
@@ -19,7 +18,7 @@ public class EventModel {
         this.eventid = eventid;
     }
 
-    private EventModel(){
+    private EventModel() {
 
     }
 
@@ -70,6 +69,4 @@ public class EventModel {
     public void setEventid(String eventid) {
         this.eventid = eventid;
     }
-
-
 }

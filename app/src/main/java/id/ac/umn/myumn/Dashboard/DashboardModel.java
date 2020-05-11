@@ -1,20 +1,21 @@
 package id.ac.umn.myumn.Dashboard;
 
-public class Model {
+public class DashboardModel {
 
     private String subject;
     private String title;
     private String date;
     private String time;
 
-    public Model(String subject, String title, String date, String time) {
+    public DashboardModel(String subject, String title, String date, String time) {
         this.subject = subject;
         this.title = title;
         this.date = date;
         this.time = time;
     }
 
-    public Model() {
+    public DashboardModel() {
+
     }
 
     public String getSubject() {

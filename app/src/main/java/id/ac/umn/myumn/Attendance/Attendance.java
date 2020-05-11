@@ -31,12 +31,11 @@ import id.ac.umn.myumn.R;
 public class Attendance extends AppCompatActivity implements AttendanceAdapter.OnListItemClick {
 
     Button btnMenu, btnNotif;
-    Spinner spinnerAttendance;
-    RecyclerView lvAttendance;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, first;
-    String selectedItem;
+    RecyclerView lvAttendance;
+    Spinner spinnerAttendance;
+    String userID, first, selectedItem;
 
     private AttendanceAdapter adapter;
 
@@ -81,7 +80,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
         myAdapter.setDropDownViewResource(R.layout.spinner_drodown);
         spinnerAttendance.setAdapter(myAdapter);
 
-        // Mengatur selected Item sesuai dengan yang ada di database
+        // Mengatur selected item sesuai dengan yang ada di database
         DocumentReference documentReference = fStore.collection("user").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -113,7 +112,6 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
     }
 
     private void semesterAttendance(String selectedItem) {
-
         Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
         FirestoreRecyclerOptions<AttendanceModel> options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, new SnapshotParser<AttendanceModel>() {

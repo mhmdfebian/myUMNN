@@ -28,13 +28,12 @@ import id.ac.umn.myumn.R;
 
 public class Login extends AppCompatActivity {
 
+    Button btnLogin, btnShowHide;
+    EditText etEmail, etPass;
     FirebaseAuth mAuth;
     TextView alertLogin;
-    EditText etEmail, etPass;
-    Button btnLogin, btnShowHide;
+
     boolean status;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +61,9 @@ public class Login extends AppCompatActivity {
                     alertLogin.setText("Could'nt Sign In, Please retype your Student Email and Password");
                 } else if (password.equals("")) {
                     alertLogin.setText("Could'nt Sign In, Please retype your Password");
-                } else  if (uname.equals("")) {
+                } else if (uname.equals("")) {
                     alertLogin.setText("Could'nt Sign In, Please retype your Student Email");
-                }else {
+                } else {
 
                     // Membandingkan username dan password yang diinput dan yang ada di database
                     mAuth.signInWithEmailAndPassword(uname, password)
@@ -73,29 +72,29 @@ public class Login extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Cek version API
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                                                    // Declare Fingerprint
-                                                    final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(Login.this)
-                                                            .setTitle("Hello Ultimafriend,")
-                                                            .setSubtitle("Please authenticate your account")
-                                                            .setDescription("using fingerprint to sign in to myumn account")
-                                                            .setNegativeButton("Cancel", executor, new DialogInterface.OnClickListener() {
-                                                                @Override
-                                                                public void onClick(DialogInterface dialog, int which) {
-
-                                                                }
-                                                            }).build();
-                                                    // Manggil Biometric
-                                                    biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                            // Declare Fingerprint
+                                            final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(Login.this)
+                                                    .setTitle("Hello Ultimafriend,")
+                                                    .setSubtitle("Please authenticate your account")
+                                                    .setDescription("using fingerprint to sign in to myumn account")
+                                                    .setNegativeButton("Cancel", executor, new DialogInterface.OnClickListener() {
                                                         @Override
-                                                        public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-                                                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                                        public void onClick(DialogInterface dialog, int which) {
+
                                                         }
-                                                    });
-                                                } else {
-                                                    // Kalo API tidak mencukupi akan login biasa
+                                                    }).build();
+                                            // Manggil Biometric
+                                            biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
+                                                @Override
+                                                public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                                                     startActivity(new Intent(getApplicationContext(), Dashboard.class));
                                                 }
+                                            });
+                                        } else {
+                                            // Kalo API tidak mencukupi akan login biasa
+                                            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                        }
                                     } else {
                                         alertLogin.setText("Could'nt Sign In, Please retype your Student Email and Password");
                                     }

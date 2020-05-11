@@ -36,17 +36,13 @@ import id.ac.umn.myumn.R;
 public class AttendanceDetail extends AppCompatActivity {
 
     Button btnClose;
-    RecyclerView lvAttendance;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, attendanceId,semester;
+    RecyclerView lvAttendance;
+    String userID, attendanceId, semester;
     TextView tvAttendance;
 
-
     private FirestoreRecyclerAdapter adapter;
-
-    private List<String> nameList = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +54,10 @@ public class AttendanceDetail extends AppCompatActivity {
         Intent pindah = getIntent();
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
         tvAttendance = findViewById(R.id.Attendance);
 
-
         lvAttendance = findViewById(R.id.listviewAttendanceDetail);
-
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -81,7 +76,6 @@ public class AttendanceDetail extends AppCompatActivity {
         semester = pindah.getStringExtra("semester");
         tvAttendance.setText(attendanceId);
 
-
         DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(attendanceId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -94,12 +88,10 @@ public class AttendanceDetail extends AppCompatActivity {
             }
         });
 
-
         Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(attendanceId).collection("attendance");
         FirestoreRecyclerOptions<AttendanceModel> options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, AttendanceModel.class)
                 .build();
-
 
         adapter = new FirestoreRecyclerAdapter<AttendanceModel, AttendanceViewHolder>(options) {
             @NonNull
@@ -114,7 +106,6 @@ public class AttendanceDetail extends AppCompatActivity {
                 holder.tvWeek.setText(model.getWeek());
                 holder.tvPresent.setText(model.getPresent());
                 holder.tvDate.setText(model.getDate());
-
             }
         };
 
@@ -125,9 +116,7 @@ public class AttendanceDetail extends AppCompatActivity {
 
 
     private class AttendanceViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvWeek;
-        private TextView tvPresent;
-        private TextView tvDate;
+        private TextView tvWeek, tvPresent, tvDate;
 
         public AttendanceViewHolder(@NonNull View itemView) {
             super(itemView);

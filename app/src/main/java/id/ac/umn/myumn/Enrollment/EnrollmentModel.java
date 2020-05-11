@@ -15,7 +15,8 @@ public class EnrollmentModel {
         this.day = day;
         this.courseid = courseid;
     }
-    public EnrollmentModel(){
+
+    public EnrollmentModel() {
 
     }
 

@@ -21,12 +21,14 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import id.ac.umn.myumn.R;
 
 public class Skkm extends AppCompatActivity {
+
     Button btnClose;
-    TextView textViewPM, textViewBM, textViewOPK, textViewIP, textViewPersen;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID;
     ProgressBar pbSKKM;
+    String userID;
+    TextView textViewPM, textViewBM, textViewOPK, textViewIP, textViewPersen;
+
     int persen, totalSKKM;
 
     private static final String KEY_BM = "minatbakat";
@@ -51,6 +53,7 @@ public class Skkm extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
         userID = mAuth.getCurrentUser().getUid();
 
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +66,6 @@ public class Skkm extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
-
 
         DocumentReference documentReference = fStore.collection("user").document(userID).collection("skkm").document("skkm");
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {

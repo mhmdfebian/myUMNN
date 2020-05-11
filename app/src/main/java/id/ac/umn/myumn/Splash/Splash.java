@@ -25,7 +25,7 @@ public class Splash extends AppCompatActivity {
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         FirebaseUser fUser = fAuth.getCurrentUser();
 
-        if(fUser != null) {
+        if (fUser != null) {
             handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -36,8 +36,7 @@ public class Splash extends AppCompatActivity {
                     finish();
                 }
             }, 3000);
-        }
-        else {
+        } else {
             handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

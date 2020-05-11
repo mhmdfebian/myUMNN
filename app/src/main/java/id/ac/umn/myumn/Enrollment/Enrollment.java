@@ -29,10 +29,11 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
     TextView event;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, courseID;
-    RecyclerView lvEnrollment;
-    private EnrollmentAdapter adapter;
     Query query;
+    RecyclerView lvEnrollment;
+    String userID, courseID;
+
+    private EnrollmentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,8 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
 
-
         lvEnrollment = findViewById(R.id.listviewEnrollment);
+
         event = findViewById(R.id.Event);
 
         userID = mAuth.getCurrentUser().getUid();
@@ -96,7 +97,6 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
         //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
     }
 
-
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Intent pindah = new Intent(Enrollment.this, EnrollmentDetail.class);
@@ -112,14 +112,11 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
-
     }
-
 }

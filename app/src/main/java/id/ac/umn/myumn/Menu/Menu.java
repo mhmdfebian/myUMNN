@@ -58,7 +58,8 @@ public class Menu extends AppCompatActivity {
                 startActivity(i);
                 finish();
                 //Transisi (masuk Profile) dari kanan ke kiri
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);;
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                ;
             }
         });
 

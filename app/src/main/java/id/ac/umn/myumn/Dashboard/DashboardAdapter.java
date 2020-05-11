@@ -13,13 +13,13 @@ import java.util.List;
 
 import id.ac.umn.myumn.R;
 
-public class Adapter extends PagerAdapter {
+public class DashboardAdapter extends PagerAdapter {
 
-    private List<Model> models;
+    private List<DashboardModel> models;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public Adapter(List<Model> models, Context context) {
+    public DashboardAdapter(List<DashboardModel> models, Context context) {
         this.models = models;
         this.context = context;
     }
@@ -59,6 +59,6 @@ public class Adapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View)object);
+        container.removeView((View) object);
     }
 }

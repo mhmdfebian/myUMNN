@@ -29,15 +29,16 @@ import id.ac.umn.myumn.R;
 public class Event extends AppCompatActivity implements EventAdapter.OnListItemClick {
 
     Button btnMenu, btnNotif, btnAdd;
-    TextView event;
-    Spinner spinnerEvent;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID, eventID, eventIDD, eventName, eventDate, eventTime, eventLocation, eventDesc;
-    RecyclerView lvEvent;
-    private EventAdapter adapter;
     Query query;
-    EventModel eventModel1;
+    RecyclerView lvEvent;
+    Spinner spinnerEvent;
+    String userID, eventID;
+    TextView event;
+
+    private EventAdapter adapter;
+
     boolean upadd;
 
     @Override
@@ -108,15 +109,12 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
 
             }
         });
-
-
     }
 
     @Override
     public void onBackPressed() {
         //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
     }
-
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
@@ -129,18 +127,6 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
                 .putExtra("eventLocation", snapshot.getString("eventlocation"))
                 .putExtra("eventDesc", snapshot.getString("eventdesc"))
                 .putExtra("upadd", upadd));
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
     }
 
     public void upcomming() {

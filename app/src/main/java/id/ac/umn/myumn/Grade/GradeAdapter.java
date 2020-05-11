@@ -3,7 +3,6 @@ package id.ac.umn.myumn.Grade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,7 @@ import java.text.DecimalFormat;
 import id.ac.umn.myumn.R;
 
 
-public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdapter.GradeViewHolder>{
+public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdapter.GradeViewHolder> {
 
     private OnListItemClick onListItemClick;
 
@@ -38,7 +37,6 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
         int nilaiuas;
         int nilaitugas;
         String letter = "F";
-
         DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
 
         nilaiuts = model.getNilaiuts();
@@ -48,39 +46,31 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
 
         total = (nilaiuts * 0.3) + (nilaitugas * 0.3) + (nilaiuas * 0.4);
 
-        if (total >= 85.00){
+        if (total >= 85.00) {
             letter = "A";
             number = 4.00;
-        }
-        else if (total >= 80.00){
+        } else if (total >= 80.00) {
             letter = "A-";
             number = 3.70;
-        }
-        else if (total >= 75.00){
+        } else if (total >= 75.00) {
             letter = "B+";
             number = 3.30;
-        }
-        else if (total >= 70.00){
+        } else if (total >= 70.00) {
             letter = "B";
             number = 3.00;
-        }
-        else if (total >= 65.00){
+        } else if (total >= 65.00) {
             letter = "B-";
             number = 2.70;
-        }
-        else if (total >= 60.00){
+        } else if (total >= 60.00) {
             letter = "C+";
             number = 2.30;
-        }
-        else if (total >= 55.00){
+        } else if (total >= 55.00) {
             letter = "C";
             number = 2.00;
-        }
-        else if (total >= 45.00){
+        } else if (total >= 45.00) {
             letter = "D";
             number = 1.00;
-        }
-        else if (total >= 0){
+        } else if (total >= 0) {
             letter = "E";
             number = 0.00;
         }
@@ -93,16 +83,16 @@ public class GradeAdapter extends FirestoreRecyclerAdapter<GradeModel, GradeAdap
     @NonNull
     @Override
     public GradeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_grade, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_grade, parent, false);
         return new GradeViewHolder(view);
     }
 
     public class GradeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView tvSubject,tvNumberGrade,tvLetterGrade;
+        private TextView tvSubject, tvNumberGrade, tvLetterGrade;
 
 
-        public GradeViewHolder(@NonNull View itemView){
+        public GradeViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvSubject = itemView.findViewById(R.id.subject);

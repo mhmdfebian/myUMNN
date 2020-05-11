@@ -25,16 +25,12 @@ import id.ac.umn.myumn.R;
 public class EventDetail extends AppCompatActivity {
 
     Button btnClose, btnAdd;
-
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-
     String userID, eventID, eventName, eventDate, eventTime, eventLocation, eventDesc;
-
     TextView tvName, tvDate, tvDesc, tvLocation;
 
     boolean upadd;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +40,6 @@ public class EventDetail extends AppCompatActivity {
         btnClose = findViewById(R.id.btnClose);
         btnAdd = findViewById(R.id.btnAdd);
 
-
         tvName = findViewById(R.id.eventName);
         tvDesc = findViewById(R.id.desc);
         tvDate = findViewById(R.id.date);
@@ -53,7 +48,6 @@ public class EventDetail extends AppCompatActivity {
         Intent pindah = getIntent();
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -67,22 +61,20 @@ public class EventDetail extends AppCompatActivity {
             }
         });
 
-
-
         eventID = pindah.getStringExtra("eventID");
         eventName = pindah.getStringExtra("eventName");
         eventDate = pindah.getStringExtra("eventDate");
         eventTime = pindah.getStringExtra("eventTime");
         eventLocation = pindah.getStringExtra("eventLocation");
         eventDesc = pindah.getStringExtra("eventDesc");
-        upadd = pindah.getBooleanExtra("upadd",upadd);
+        upadd = pindah.getBooleanExtra("upadd", upadd);
 
         tvName.setText(eventName);
         tvDesc.setText(eventDesc);
         tvDate.setText(eventDate);
         tvLocation.setText(eventLocation);
 
-        if(upadd) {
+        if (upadd) {
             btnAdd.setBackgroundResource(R.drawable.close);
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -104,8 +96,7 @@ public class EventDetail extends AppCompatActivity {
                 }
             });
 
-        }
-        else{
+        } else {
             btnAdd.setBackgroundResource(R.drawable.plus);
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -126,8 +117,6 @@ public class EventDetail extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 
     @Override

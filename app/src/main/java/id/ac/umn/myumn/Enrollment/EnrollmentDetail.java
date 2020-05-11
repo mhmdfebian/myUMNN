@@ -29,15 +29,10 @@ import id.ac.umn.myumn.R;
 public class EnrollmentDetail extends AppCompatActivity {
 
     Button btnClose, btnAdd;
-
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-
     String userID, courseID, subject, time, timeend, day, semester;
-
     TextView tvSubject, tvDay, tvTime, tvTimeEnd;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +42,15 @@ public class EnrollmentDetail extends AppCompatActivity {
         btnClose = findViewById(R.id.btnClose);
         btnAdd = findViewById(R.id.btnAdd);
 
-
         tvSubject = findViewById(R.id.subject);
         tvDay = findViewById(R.id.day);
         tvTime = findViewById(R.id.time);
         tvTimeEnd = findViewById(R.id.timeend);
 
         Intent pindah = getIntent();
+
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -69,7 +63,6 @@ public class EnrollmentDetail extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
-
 
 
         courseID = pindah.getStringExtra("courseID");
@@ -93,25 +86,24 @@ public class EnrollmentDetail extends AppCompatActivity {
             }
         });
 
-            btnAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    DocumentReference docRef = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(courseID);
-                    Map<String, Object> event = new HashMap<>();
-                    event.put("subject", subject);
-                    event.put("day", day);
-                    event.put("time",time);
-                    event.put("timeend", timeend);
-                    docRef.set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(EnrollmentDetail.this, subject + " berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            });
-
+                DocumentReference docRef = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(courseID);
+                Map<String, Object> event = new HashMap<>();
+                event.put("subject", subject);
+                event.put("day", day);
+                event.put("time", time);
+                event.put("timeend", timeend);
+                docRef.set(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(EnrollmentDetail.this, subject + " berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
 
     }

@@ -21,9 +21,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
-            android:padding="12dp"
             android:background="@drawable/close"
-            android:backgroundTint="@color/TeritaryLight" />
+            android:backgroundTint="@color/TeritaryLight"
+            android:padding="12dp" />
     </LinearLayout>
 
     <RelativeLayout
@@ -56,39 +56,39 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="14dp"
-            android:text="Week"
             android:fontFamily="@font/gilroy_medium"
+            android:text="Week"
             android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="32dp"
-            android:textAlignment="center"
-            android:text="Present"
             android:fontFamily="@font/gilroy_medium"
+            android:text="Present"
+            android:textAlignment="center"
             android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="32dp"
-            android:textAlignment="center"
-            android:text="Date"
             android:fontFamily="@font/gilroy_medium"
+            android:text="Date"
+            android:textAlignment="center"
             android:textColor="@color/Teritary"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
         android:orientation="horizontal">
 
         <androidx.recyclerview.widget.RecyclerView

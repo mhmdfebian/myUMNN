@@ -36,20 +36,21 @@ import id.ac.umn.myumn.R;
 
 public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemClick {
 
-    TextView ips,ipk;
     Button btnMenu, btnNotif;
-    Spinner spinnerGrade;
-    RecyclerView lvGrade;
+    DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID;
+    RecyclerView lvGrade;
+    Spinner spinnerGrade;
+    String userID, selectedItem, first;
+    TextView ips;
+
+    double total, number, ips1, totalips = 0, totaltotalips, totalsks = 0;
+
     private static final String KEY_NILAIUTS = "nilaiuts";
     private static final String KEY_NILAIUAS = "nilaiuas";
     private static final String KEY_NILAITUGAS = "nilaitugas";
     private static final String KEY_SKS = "sks";
-    double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0, totalipk = 0 , totaltotalsks = 0;
-    DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
-    String selectedItem, first;
 
     private GradeAdapter adapter;
 
@@ -63,10 +64,10 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
 
         btnMenu = findViewById(R.id.btnMenu);
         btnNotif = findViewById(R.id.btnNotif);
+
         lvGrade = findViewById(R.id.listviewGrade);
 
         ips = findViewById(R.id.ips);
-
 
         userID = mAuth.getCurrentUser().getUid();
 
@@ -118,13 +119,13 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                     grade(selectedItem);
                     lvGrade.setAdapter(adapter);
 
-
                 } else if (selectedItem.equals("2nd Semester")) {
                     totaltotalips = 0;
                     grade(selectedItem);
                     lvGrade.setAdapter(adapter);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -137,14 +138,12 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
         //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
     }
 
-
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Intent pindah = new Intent(Grade.this, GradeDetail.class);
         startActivity(pindah
                 .putExtra("gradeID", snapshot.getId())
                 .putExtra("semester", selectedItem));
-
     }
 
     private void grade(final String selectedItem) {
@@ -155,66 +154,61 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for (DocumentSnapshot d : list) {
-                                fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId())
-                                        .addSnapshotListener(Grade.this, new EventListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onEvent(@androidx.annotation.Nullable DocumentSnapshot snapshot, @androidx.annotation.Nullable FirebaseFirestoreException e) {
-                                                if(snapshot.exists()){
-                                                    int nilaiuts = snapshot.getLong(KEY_NILAIUTS).intValue();
-                                                    int nilaiuas = snapshot.getLong(KEY_NILAIUAS).intValue();
-                                                    int nilaitugas = snapshot.getLong(KEY_NILAITUGAS).intValue();
-                                                    int sks = snapshot.getLong(KEY_SKS).intValue();
+                        if (e == null) {
+                            if (!queryDocumentSnapshots.isEmpty()) {
+                                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                                for (DocumentSnapshot d : list) {
+                                    fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(d.getId())
+                                            .addSnapshotListener(Grade.this, new EventListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onEvent(@androidx.annotation.Nullable DocumentSnapshot snapshot, @androidx.annotation.Nullable FirebaseFirestoreException e) {
+                                                    if (e == null) {
+                                                        if (snapshot.exists()) {
+                                                            int nilaiuts = snapshot.getLong(KEY_NILAIUTS).intValue();
+                                                            int nilaiuas = snapshot.getLong(KEY_NILAIUAS).intValue();
+                                                            int nilaitugas = snapshot.getLong(KEY_NILAITUGAS).intValue();
+                                                            int sks = snapshot.getLong(KEY_SKS).intValue();
 
-                                                    total = (nilaiuts * 0.3) + (nilaitugas * 0.3) + (nilaiuas * 0.4);
-                                                    number = 0;
+                                                            total = (nilaiuts * 0.3) + (nilaitugas * 0.3) + (nilaiuas * 0.4);
+                                                            number = 0;
 
-                                                    if (total >= 85.00){
-                                                        number = 4.00;
-                                                    }
-                                                    else if (total >= 80.00){
-                                                        number = 3.70;
-                                                    }
-                                                    else if (total >= 75.00){
-                                                        number = 3.30;
-                                                    }
-                                                    else if (total >= 70.00){
-                                                        number = 3.00;
-                                                    }
-                                                    else if (total >= 65.00){
-                                                        number = 2.70;
-                                                    }
-                                                    else if (total >= 60.00){
-                                                        number = 2.30;
-                                                    }
-                                                    else if (total >= 55.00){
-                                                        number = 2.00;
-                                                    }
-                                                    else if (total >= 45.00){
-                                                        number = 1.00;
-                                                    }
-                                                    else if (total >= 0){
-                                                        number = 0.00;
-                                                    }
+                                                            if (total >= 85.00) {
+                                                                number = 4.00;
+                                                            } else if (total >= 80.00) {
+                                                                number = 3.70;
+                                                            } else if (total >= 75.00) {
+                                                                number = 3.30;
+                                                            } else if (total >= 70.00) {
+                                                                number = 3.00;
+                                                            } else if (total >= 65.00) {
+                                                                number = 2.70;
+                                                            } else if (total >= 60.00) {
+                                                                number = 2.30;
+                                                            } else if (total >= 55.00) {
+                                                                number = 2.00;
+                                                            } else if (total >= 45.00) {
+                                                                number = 1.00;
+                                                            } else if (total >= 0) {
+                                                                number = 0.00;
+                                                            }
 
-                                                    ips1 = number * sks;
+                                                            ips1 = number * sks;
+                                                            totalips = ips1 + totalips;
+                                                            totalsks = sks + totalsks;
+                                                            totaltotalips = totalips / totalsks;
 
-                                                    totalips = ips1 + totalips;
-                                                    totalsks = sks + totalsks;
-                                                    totaltotalips =  totalips / totalsks;
-                                                    ips.setText( REAL_FORMATTER.format(totaltotalips));
+                                                            ips.setText(REAL_FORMATTER.format(totaltotalips));
+                                                        }
+                                                    }
                                                 }
-                                            }
-                                        });
+                                            });
                                     totalips = 0;
                                     ips1 = 0;
                                     totalsks = 0;
                                     totaltotalips = 0;
-                            }
-                    }
-                        else ips.setText(REAL_FORMATTER.format(totaltotalips));
+                                }
+                            } else ips.setText(REAL_FORMATTER.format(totaltotalips));
+                        }
                     }
                 });
 
@@ -232,7 +226,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
                 })
                 .build();
 
-        adapter = new GradeAdapter(options,this);
+        adapter = new GradeAdapter(options, this);
         lvGrade.setHasFixedSize(true);
         lvGrade.setLayoutManager(new LinearLayoutManager(this));
         adapter.startListening();

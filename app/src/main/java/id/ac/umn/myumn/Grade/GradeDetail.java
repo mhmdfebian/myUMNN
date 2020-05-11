@@ -25,7 +25,6 @@ public class GradeDetail extends AppCompatActivity {
 
 
     Button btnClose;
-    RecyclerView lvCourse;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
     String userID, gradeId, semester;
@@ -60,26 +59,25 @@ public class GradeDetail extends AppCompatActivity {
             }
         });
 
-
         gradeId = pindah.getStringExtra("gradeID");
         semester = pindah.getStringExtra("semester");
-
 
         DocumentReference documentReference = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(gradeId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
+                if (documentSnapshot.exists()) {
                     tvSubject.setText(documentSnapshot.getString("subject"));
                     tvNilaitugas.setText("" + documentSnapshot.getLong("nilaitugas").intValue());
                     tvNilaiuts.setText("" + documentSnapshot.getLong("nilaiuts").intValue());
                     tvNilaiuas.setText("" + documentSnapshot.getLong("nilaiuas").intValue());
-                }else {
+                } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         Intent intentBack = new Intent();
@@ -88,5 +86,4 @@ public class GradeDetail extends AppCompatActivity {
         //Transisi (keluar) dari kiri ke kanan
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
 }

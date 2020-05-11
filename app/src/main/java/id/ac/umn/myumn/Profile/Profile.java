@@ -26,7 +26,7 @@ import id.ac.umn.myumn.Skkm.Skkm;
 public class Profile extends AppCompatActivity {
 
     Button btnMenu, btnNotif, btnSKKM, btnFinancial;
-    TextView Name, EmailStudent , Nim, faculty, program, year;
+    TextView Name, EmailStudent, Nim, faculty, program, year;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -88,19 +88,18 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-
         DocumentReference documentReference = fStore.collection("user").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
+                if (documentSnapshot.exists()) {
                     Name.setText(documentSnapshot.getString("fullname"));
                     EmailStudent.setText(documentSnapshot.getString("email"));
                     Nim.setText(documentSnapshot.getString("nim"));
                     faculty.setText(documentSnapshot.getString("faculty"));
                     program.setText(documentSnapshot.getString("program"));
                     year.setText(documentSnapshot.getString("year"));
-                }else {
+                } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }

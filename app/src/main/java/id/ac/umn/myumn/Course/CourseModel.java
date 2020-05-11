@@ -1,23 +1,22 @@
 package id.ac.umn.myumn.Course;
 
-public class CourseModel{
+public class CourseModel {
 
     private String subject;
     private String courseid;
     private String title;
     private String topic;
 
-    private CourseModel(String subject, String courseid, String title, String topic){
+    private CourseModel(String subject, String courseid, String title, String topic) {
         this.subject = subject;
         this.courseid = courseid;
         this.title = title;
         this.topic = topic;
     }
 
-    private CourseModel(){
+    private CourseModel() {
 
     }
-
 
     public String getSubject() {
         return subject;
