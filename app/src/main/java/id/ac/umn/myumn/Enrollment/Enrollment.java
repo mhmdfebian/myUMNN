@@ -89,9 +89,6 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
         lvEnrollment.setAdapter(adapter);
         lvEnrollment.setHasFixedSize(true);
         lvEnrollment.setLayoutManager(new LinearLayoutManager(this));
-
-
-
     }
 
     @Override

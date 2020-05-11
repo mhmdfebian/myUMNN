@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,7 +49,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
     private static final String KEY_SKS = "sks";
     double total, number,ips1, totalips = 0, totaltotalips, totalsks = 0, totalipk = 0 , totaltotalsks = 0;
     DecimalFormat REAL_FORMATTER = new DecimalFormat("0.00");
-    String selectedItem;
+    String selectedItem, first;
 
     private GradeAdapter adapter;
 
@@ -91,10 +92,21 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
             }
         });
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
                 Grade.this, R.layout.spinner, getResources().getStringArray(R.array.semester));
         myAdapter.setDropDownViewResource(R.layout.spinner_drodown);
         spinnerGrade.setAdapter(myAdapter);
+
+        DocumentReference documentReference = fStore.collection("user").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@androidx.annotation.Nullable DocumentSnapshot documentSnapshot, @androidx.annotation.Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    first = documentSnapshot.getString("semester");
+                    spinnerGrade.setSelection(myAdapter.getPosition(first));
+                }
+            }
+        });
 
         spinnerGrade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -31,7 +31,7 @@ public class Financial extends AppCompatActivity {
     Spinner spinnerFinancial;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-    String userID;
+    String userID,first;
     TextView tvSemester, tvBiayatetap, tvSks, tvSkspeminatan, tvBiayasks, tvJumlahsks, tvJumlahpeminatan, tvTotal, tvSudahbayar, tvBelumbayar, tvBiayapeminatan;
 
     @Override
@@ -71,10 +71,21 @@ public class Financial extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
                 Financial.this, R.layout.spinner_light, getResources().getStringArray(R.array.semester));
         myAdapter.setDropDownViewResource(R.layout.spinner_dropdown_light);
         spinnerFinancial.setAdapter(myAdapter);
+
+        DocumentReference documentReference = fStore.collection("user").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    first = documentSnapshot.getString("semester");
+                    spinnerFinancial.setSelection(myAdapter.getPosition(first));
+                }
+            }
+        });
 
         spinnerFinancial.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

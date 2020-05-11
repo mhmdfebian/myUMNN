@@ -89,7 +89,6 @@ public class Dashboard extends AppCompatActivity {
         viewPager.setPadding(0, 0, 120, 0);
 
 
-
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,7 +157,7 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        if (mAuth.getCurrentUser() != null ) {
+        if (mAuth.getCurrentUser() != null) {
             userID = mAuth.getCurrentUser().getUid();
             DocumentReference documentReference = fStore.collection("user").document(userID);
             documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -171,7 +170,7 @@ public class Dashboard extends AppCompatActivity {
                                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                                     @Override
                                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                                        if (e == null){
+                                        if (e == null) {
                                             if (!queryDocumentSnapshots.isEmpty()) {
                                                 List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                                                 for (DocumentSnapshot d : list) {
@@ -214,8 +213,8 @@ public class Dashboard extends AppCompatActivity {
                                                             });
                                                 }
                                             }
+                                        }
                                     }
-                                }
                                 });
 
                     } else {
@@ -227,11 +226,11 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
-    private void startAlarm(Calendar calendar, String title,String subject) {
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+    private void startAlarm(Calendar calendar, String title, String subject) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-                intent.putExtra("title", title)
-                      .putExtra("subject", subject);
+        intent.putExtra("title", title)
+                .putExtra("subject", subject);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 

@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import id.ac.umn.myumn.Menu.Menu;
@@ -35,7 +39,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
     String userID;
     Query query;
     TextView course;
-    String selectedItem;
+    String selectedItem,first;
 
     private CourseAdapter adapter;
 
@@ -76,10 +80,21 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
         spinnerCourse = findViewById(R.id.spinnerCourse);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
                 Course.this, R.layout.spinner, getResources().getStringArray(R.array.semester));
         myAdapter.setDropDownViewResource(R.layout.spinner_drodown);
         spinnerCourse.setAdapter(myAdapter);
+
+        DocumentReference documentReference = fStore.collection("user").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    first = documentSnapshot.getString("semester");
+                    spinnerCourse.setSelection(myAdapter.getPosition(first));
+                }
+            }
+            });
 
         spinnerCourse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

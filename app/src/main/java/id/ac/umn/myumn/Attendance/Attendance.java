@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,8 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import id.ac.umn.myumn.Menu.Menu;
@@ -31,7 +35,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
     RecyclerView lvAttendance;
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
-    String userID;
+    String userID, first;
     String selectedItem;
 
     private AttendanceAdapter adapter;
@@ -72,15 +76,27 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
 
         spinnerAttendance = findViewById(R.id.spinnerAttendance);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(
                 Attendance.this, R.layout.spinner, getResources().getStringArray(R.array.semester));
         myAdapter.setDropDownViewResource(R.layout.spinner_drodown);
         spinnerAttendance.setAdapter(myAdapter);
 
+        // Mengatur selected Item sesuai dengan yang ada di database
+        DocumentReference documentReference = fStore.collection("user").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    first = documentSnapshot.getString("semester");
+                    spinnerAttendance.setSelection(myAdapter.getPosition(first));
+                }
+            }
+        });
+
         spinnerAttendance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-               selectedItem = spinnerAttendance.getItemAtPosition(position).toString();
+                selectedItem = spinnerAttendance.getItemAtPosition(position).toString();
                 if (selectedItem.equals("1st Semester")) {
                     semesterAttendance(selectedItem);
 
@@ -88,20 +104,18 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
                     semesterAttendance(selectedItem);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
-
-
     }
 
     private void semesterAttendance(String selectedItem) {
 
         Query query = fStore.collection("user").document(userID).collection("course").document("semester").collection(selectedItem);
-        FirestoreRecyclerOptions<AttendanceModel>options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
+        FirestoreRecyclerOptions<AttendanceModel> options = new FirestoreRecyclerOptions.Builder<AttendanceModel>()
                 .setQuery(query, new SnapshotParser<AttendanceModel>() {
                     @NonNull
                     @Override
@@ -113,7 +127,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
                     }
                 })
                 .build();
-        adapter = new AttendanceAdapter(options,this);
+        adapter = new AttendanceAdapter(options, this);
 
         lvAttendance.setHasFixedSize(true);
         lvAttendance.setLayoutManager(new LinearLayoutManager(this));
@@ -127,25 +141,11 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
         //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
     }
 
-
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Intent pindah = new Intent(Attendance.this, AttendanceDetail.class);
         startActivity(pindah
-                        .putExtra("semester", selectedItem)
-                        .putExtra("attendanceID", snapshot.getId()));
+                .putExtra("semester", selectedItem)
+                .putExtra("attendanceID", snapshot.getId()));
     }
-
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        adapter.stopListening();
-//    }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//    }
-
 }

@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String uname = etEmail.getText().toString();
                 String password = etPass.getText().toString();
 
@@ -67,12 +66,15 @@ public class Login extends AppCompatActivity {
                     alertLogin.setText("Could'nt Sign In, Please retype your Student Email");
                 }else {
 
+                    // Membandingkan username dan password yang diinput dan yang ada di database
                     mAuth.signInWithEmailAndPassword(uname, password)
                             .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        // Cek version API
                                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                                                    // Declare Fingerprint
                                                     final BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(Login.this)
                                                             .setTitle("Hello Ultimafriend,")
                                                             .setSubtitle("Please authenticate your account")
@@ -83,6 +85,7 @@ public class Login extends AppCompatActivity {
 
                                                                 }
                                                             }).build();
+                                                    // Manggil Biometric
                                                     biometricPrompt.authenticate(new CancellationSignal(), executor, new BiometricPrompt.AuthenticationCallback() {
                                                         @Override
                                                         public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
@@ -90,7 +93,8 @@ public class Login extends AppCompatActivity {
                                                         }
                                                     });
                                                 } else {
-                                                    alertLogin.setText("Android kamu tolol");
+                                                    // Kalo API tidak mencukupi akan login biasa
+                                                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
                                                 }
                                     } else {
                                         alertLogin.setText("Could'nt Sign In, Please retype your Student Email and Password");

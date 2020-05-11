@@ -161,7 +161,6 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
         lvEvent.setHasFixedSize(true);
         lvEvent.setLayoutManager(new LinearLayoutManager(this));
         adapter.startListening();
-
     }
 
     public void added() {
