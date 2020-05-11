@@ -196,7 +196,7 @@ public class Dashboard extends AppCompatActivity {
                                                                                     calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
                                                                                     calendar.set(Calendar.MINUTE, date.getMinutes());
                                                                                     calendar.set(Calendar.SECOND, 0);
-                                                                                 
+
                                                                                     String title = x.getString(KEY_TITLE);
                                                                                     String subject = x.getString(KEY_SUBJECT);
                                                                                     startAlarm(calendar, title, subject);
