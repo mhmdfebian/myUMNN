@@ -78,7 +78,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
             public void onClick(View v) {
                 Intent i = new Intent(Grade.this, Menu.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Menu sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -88,7 +88,7 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
             public void onClick(View v) {
                 Intent i = new Intent(Grade.this, Notification.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Notification sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -135,11 +135,12 @@ public class Grade extends AppCompatActivity implements GradeAdapter.OnListItemC
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        //Disable back button
     }
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
+        //pilih item yang akan masuk ke GradeDetail
         Intent pindah = new Intent(Grade.this, GradeDetail.class);
         startActivity(pindah
                 .putExtra("gradeID", snapshot.getId())

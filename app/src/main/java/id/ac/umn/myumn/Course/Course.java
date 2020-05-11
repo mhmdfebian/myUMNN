@@ -120,7 +120,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        //Disable back button
     }
 
     public void semesterCourse(String selectedItem) {
@@ -146,6 +146,7 @@ public class Course extends AppCompatActivity implements CourseAdapter.OnListIte
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
+        //pilih item yang akan masuk ke CourseDetail
         Intent pindah = new Intent(Course.this, CourseDetail.class);
         startActivity(pindah
                 .putExtra("semester", selectedItem)

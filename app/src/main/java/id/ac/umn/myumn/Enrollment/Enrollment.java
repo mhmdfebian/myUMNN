@@ -57,7 +57,7 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
             public void onClick(View v) {
                 Intent i = new Intent(Enrollment.this, Menu.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Menu sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -67,7 +67,7 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
             public void onClick(View v) {
                 Intent i = new Intent(Enrollment.this, Notification.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Notification sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -94,11 +94,12 @@ public class Enrollment extends AppCompatActivity implements EnrollmentAdapter.O
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        //Disable back button
     }
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
+        //pilih item yang akan masuk ke EnrollmentDetail
         Intent pindah = new Intent(Enrollment.this, EnrollmentDetail.class);
         startActivity(pindah
                 .putExtra("courseID", snapshot.getId())

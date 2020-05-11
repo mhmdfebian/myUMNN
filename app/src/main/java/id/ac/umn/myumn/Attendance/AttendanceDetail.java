@@ -67,6 +67,7 @@ public class AttendanceDetail extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
+                //Transisi (tutup AttendanceDetail) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -143,6 +144,7 @@ public class AttendanceDetail extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
+        //Transisi (tutup AttendanceDetail) dari kiri ke kanan
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

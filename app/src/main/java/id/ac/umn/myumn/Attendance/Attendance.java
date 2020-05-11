@@ -58,7 +58,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
             public void onClick(View v) {
                 Intent i = new Intent(Attendance.this, Menu.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Menu sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -68,7 +68,7 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
             public void onClick(View v) {
                 Intent i = new Intent(Attendance.this, Notification.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Notification sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -136,11 +136,12 @@ public class Attendance extends AppCompatActivity implements AttendanceAdapter.O
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        //Disable back button
     }
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
+        //pilih item yang akan masuk ke AttendanceDetail
         Intent pindah = new Intent(Attendance.this, AttendanceDetail.class);
         startActivity(pindah
                 .putExtra("semester", selectedItem)

@@ -107,16 +107,19 @@ public class Login extends AppCompatActivity {
         btnShowHide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //button untuk show atau hide password
                 if (status) {
                     etPass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     status = false;
                     etPass.setSelection(etPass.length());
                     btnShowHide.setBackgroundResource(R.drawable.invisible);
+                    //hide password ketika button invisible ditekan
                 } else {
                     etPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
                     status = true;
                     etPass.setSelection(etPass.length());
                     btnShowHide.setBackgroundResource(R.drawable.visible);
+                    //show password ketika button visible ditekan
                 }
             }
         });

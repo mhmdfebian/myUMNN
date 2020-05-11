@@ -63,7 +63,7 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
             public void onClick(View v) {
                 Intent i = new Intent(Event.this, Menu.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Menu sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -73,7 +73,7 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
             public void onClick(View v) {
                 Intent i = new Intent(Event.this, Notification.class);
                 startActivity(i);
-                //Transisi (buka sidebar) dari kiri ke kanan
+                //Transisi (buka Notification sidebar) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -113,11 +113,12 @@ public class Event extends AppCompatActivity implements EventAdapter.OnListItemC
 
     @Override
     public void onBackPressed() {
-        //Biar ga bisa mencet back yang bakal ngarahin ke activity Login
+        //Disable back button
     }
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
+        //pilih item yang akan masuk ke EventDetail
         Intent pindah = new Intent(Event.this, EventDetail.class);
         startActivity(pindah
                 .putExtra("eventID", snapshot.getId())

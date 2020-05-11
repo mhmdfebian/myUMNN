@@ -57,6 +57,7 @@ public class EventDetail extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
+                //Transisi (tutup EventDetail) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -75,6 +76,7 @@ public class EventDetail extends AppCompatActivity {
         tvLocation.setText(eventLocation);
 
         if (upadd) {
+            //button untuk menghapus event yang telah ditambahkan
             btnAdd.setBackgroundResource(R.drawable.close);
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,6 +92,7 @@ public class EventDetail extends AppCompatActivity {
                                 finish();
                                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                             }
+                            btnAdd.setBackgroundResource(R.drawable.plus);
                         }
                     });
 
@@ -97,6 +100,7 @@ public class EventDetail extends AppCompatActivity {
             });
 
         } else {
+            //button untuk menambahkan event yang dipilih
             btnAdd.setBackgroundResource(R.drawable.plus);
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,6 +118,7 @@ public class EventDetail extends AppCompatActivity {
                             Toast.makeText(EventDetail.this, eventName + " berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
                         }
                     });
+                    btnAdd.setBackgroundResource(R.drawable.close);
                 }
             });
         }
@@ -124,6 +129,7 @@ public class EventDetail extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
+        //Transisi (tutup EventDetail) dari kiri ke kanan
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

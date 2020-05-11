@@ -60,6 +60,7 @@ public class EnrollmentDetail extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
+                //Transisi (tutup EnrollmentDetail) dari kiri ke kanan
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
@@ -89,7 +90,7 @@ public class EnrollmentDetail extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //button untuk menambahkan(enrollment) subject(matkul) untuk user
                 DocumentReference docRef = fStore.collection("user").document(userID).collection("course").document("semester").collection(semester).document(courseID);
                 Map<String, Object> event = new HashMap<>();
                 event.put("subject", subject);
@@ -113,6 +114,7 @@ public class EnrollmentDetail extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
+        //Transisi (tutup EnrollmentDetail) dari kiri ke kanan
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

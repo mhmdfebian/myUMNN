@@ -136,7 +136,7 @@ public class Menu extends AppCompatActivity {
                 Intent intentBack = new Intent();
                 setResult(RESULT_OK, intentBack);
                 finish();
-                //Transisi (close menu) dari kanan ke kiri
+                //Transisi (tutup Menu) dari kanan ke kiri
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -158,7 +158,7 @@ public class Menu extends AppCompatActivity {
         Intent intentBack = new Intent();
         setResult(RESULT_OK, intentBack);
         finish();
-        //Transisi (close menu) dari kanan ke kiri
+        //Transisi (tutup Menu) dari kanan ke kiri
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
