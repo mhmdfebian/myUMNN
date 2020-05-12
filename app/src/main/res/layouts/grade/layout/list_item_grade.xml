@@ -35,9 +35,9 @@
 
         <TextView
             android:id="@+id/letterGrade"
-            android:layout_width="30dp"
+            android:layout_width="25dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="18dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
@@ -46,6 +46,6 @@
             android:fontFamily="@font/gilroy_extrabold"
             android:textColor="@color/Secondary"
             android:textSize="18sp"
-            android:textAlignment="textEnd"/>
+            android:textAlignment="textStart"/>
 
     </RelativeLayout>
